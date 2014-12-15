@@ -1,0 +1,32 @@
+* {
+	box-sizing: border-box;
+}
+
+.signup-link {
+	width: 250px;
+	display: block;
+	margin: auto;
+	text-align: center;
+}
+
+h1 .signup, .login {
+	text-align: center;
+	width: 100%;
+	display: inline-block;
+}
+
+form {
+	/*border: 1px solid black;*/
+	width: 250px;
+	margin: auto;
+}
+
+form * {
+	border: 1px solid gray;
+	padding: 5px 0;
+	width: 100%;
+	margin: 10px 0px;
+	text-align: center;
+	display: block;
+	resize: none;
+}
