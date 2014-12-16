@@ -84,11 +84,14 @@ get "/:username/home" do
 end
 
 get "/:username/profile" do 
-  redirect '/' if session[:user] == [] # users can view each others' profiles
-  user = User.find(session[:user][:id])
-  existing_personality = Personality.find_by(user_id: user.id)
+  @own_profile = session[:user][:username] == params[:username]
 
-  redirect "/#{params[:username]}/questionnaire" if !existing_personality
+  @user = User.find_by(username: params[:username])
+  redirect '/' if session[:user] == [] || @user == nil # users can view each others' profiles
+  
+  @existing_personality = Personality.find_by(user_id: @user.id)
+
+  redirect "/#{params[:username]}/questionnaire" if !@existing_personality
 
   return erb :user_profile
 end

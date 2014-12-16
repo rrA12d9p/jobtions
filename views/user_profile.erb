@@ -1,1 +1,34 @@
+<script type="text/javascript" src="/js/helper.js"></script>
+<script>loadCSS("/css/user_profile.css")</script>
+
 <%= erb(:header, :layout => false) %>
+
+<div class="clear-header"></div>
+
+<div class="main-container">
+	
+	<section class="profile-main">
+
+		<h1 class="center"> <%= @user.username %> </h1>
+		<ul>
+			<li>Extraversion: <%= @user.personality.extraversion %></li>
+			<li>Agreeableness: <%= @user.personality.agreeableness %></li>
+			<li>Conscientiousness: <%= @user.personality.conscientiousness %></li>
+			<li>Emotional Stability: <%= @user.personality.emotional_stability %></li>
+			<li>Intellect/Imagination: <%= @user.personality.intellect_imagination %></li>
+		</ul>
+
+		<% if @own_profile %>
+			<a class="btn-main" href="/<%=session[:user][:username]%>/questionnaire">Retake</a>
+		<% end %>
+		
+
+	</section>
+
+	<aside>
+		<div class="profile-picture">
+			<!-- <i class="icon-smile"></i> -->
+		</div>
+	</aside>
+
+</div>
