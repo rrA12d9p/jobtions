@@ -1,0 +1,81 @@
+#tableContainer {
+	width: 80%;
+	margin: auto;
+}
+
+input[type=submit] {
+	width: 80px;
+	position: relative;
+	display: block;
+	margin: 20px auto;
+}
+
+thead.fixedHeader tr {
+	position: relative
+}
+
+html>body thead.fixedHeader tr {
+	display: block
+}
+
+thead.fixedHeader th {
+	background: #2B78E4;
+	font-weight: normal;
+	padding: 4px 3px;
+	text-align: center;
+}
+
+thead.fixedHeader a, thead.fixedHeader a:link, thead.fixedHeader a:visited {
+	color: #FFF;
+	display: block;
+	text-decoration: none;
+	width: 100%
+}
+
+thead.fixedHeader a:hover {
+	color: #FFF;
+	display: block;
+	text-decoration: underline;
+	width: 100%
+}
+
+html>body tbody.scrollContent {
+	display: block;
+	height: 500px;
+	overflow: auto;
+	width: 100%
+}
+
+tbody.scrollContent td, tbody.scrollContent tr.normalRow td {
+	background: #FFF;
+	border-bottom: none;
+	border-left: none;
+	border-right: 1px solid #CCC;
+	border-top: 1px solid #DDD;
+	padding: 2px 3px 3px 4px
+}
+
+tbody.scrollContent tr.alternateRow td {
+	background: #EEE;
+	border-bottom: none;
+	border-left: none;
+	border-right: 1px solid #CCC;
+	border-top: 1px solid #DDD;
+	padding: 2px 3px 3px 4px
+}
+
+td, th {
+	padding: 0px;
+	width: 150px;
+	text-align: center;
+}
+
+td:nth-child(1), th:nth-child(1) {
+	text-align: left;
+	width: 50px;
+}
+
+td:nth-child(2), th:nth-child(2) {
+	text-align: left;
+	width: 400px;
+}

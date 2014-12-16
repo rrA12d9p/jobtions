@@ -1,0 +1,45 @@
+<%= erb(:header, :layout => false) %>
+
+<script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/js/form.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/css/questionnaire.css">
+
+<div class="clear-header"></div>
+
+<form id="save" name="questionnaire" action="/save-questionnaire" method="post">
+
+	<div id="tableContainer" class="tableContainer">
+	<table border="0" cellpadding="0" cellspacing="0" class="scrollTable">
+	<thead class="fixedHeader">
+		<tr>
+			<th></th>
+		  <th></th>
+		  <th><a href="#">Very Inaccurate</a></th>
+		  <th><a href="#">Moderately Inaccurate</a></th>
+			<th><a href="#">Neither Accurate Nor Inaccurate</a></th>
+			<th><a href="#">Moderately Accurate</a></th>
+			<th><a href="#">Very Accurate</a></th>
+		</tr>
+	</thead>
+	<tbody class="scrollContent">
+		
+		<% @questions.each_with_index do |q,i| %>
+			<tr>
+				<td><%= "#{i+1}." %></td>
+				<td><%= q %></td>
+				<td class="radio-option"><input type="radio" name=<%="#{i+1}"%> value="-4"></td>
+				<td class="radio-option"><input type="radio" name=<%="#{i+1}"%> value="-1"></td>
+				<td class="radio-option"><input type="radio" name=<%="#{i+1}"%> value="0"></td>
+				<td class="radio-option"><input type="radio" name=<%="#{i+1}"%> value="1"></td>
+				<td class="radio-option"><input type="radio" name=<%="#{i+1}"%> value="4"></td>
+			</tr>
+		<% end %>
+
+	</tbody>
+	</table>
+
+	<input class="submit" type="submit" value="Save">
+
+	</div>
+</form>

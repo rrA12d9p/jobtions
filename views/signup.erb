@@ -1,8 +1,15 @@
-<h1><a class="signup" href="/">Jobtions</a></h1>
+<%= erb(:header, :layout => false) %>
 
-<form action="/signup" method="post">
-	<input type="email" placeholder="email" name="email">
-	<input type="password" placeholder="password" name="password">
+<link rel="stylesheet" type="text/css" href="../css/auth.css">
 
-	<input type="submit" value="Sign up">
-</form>
+<div class="signup-wrapper">
+	<form action="/signup" method="post">
+		<input type="text" placeholder="username" name="username">
+		<input type="email" placeholder="email" name="email">
+		<input type="password" placeholder="password" name="password">
+		<input type="password" placeholder="confirm password" name="confirm_password">
+		<input type="text" placeholder="zipcode" name="zipcode">
+
+		<input type="submit" value="Sign up">
+	</form>
+</div>

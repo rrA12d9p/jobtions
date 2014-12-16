@@ -1,10 +1,17 @@
 <header>
-	<h1><a href="/">Jobtions</a></h1>
-  <nav>
-    <ul>
-      <li><a href="/logout">Logout
-        (<%= session[:user][:email] %>)
-      </a></li>
-    </ul>
-  </nav>
+	<div class="logo">
+		<a href="/">Jobtions</a>
+		<!-- <img src="../img/jobtions_logo.png"> -->
+	</div>
+
+	<nav>
+		<%if session[:user].empty? %>
+			<a class="btn-main" href="/signin">Sign in</a>
+			<a class="btn-main" href="/signup">Create an account</a>
+		<% else %>
+			<a class="btn-main" href="/<%= session[:user][:username] %>/home">Home</a>
+			<a class="btn-main" href="/<%= session[:user][:username] %>/profile">Profile</a>
+			<a class="btn-main" href="/signout">Sign out</a>
+		<% end %>
+	</nav>
 </header>
