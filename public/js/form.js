@@ -15,7 +15,10 @@ $(document).ready(function(){
     if($('input:radio:checked').length < rgroups)
       {
         event.preventDefault(); //don't submit
-        alert('Please make sure you\'ve answered every question.');
+
+        toastr.error('Please make sure you\'ve answered every question.')
+
+        // alert('Please make sure you\'ve answered every question.');
       }
   });
 });

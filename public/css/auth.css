@@ -1,15 +1,20 @@
+body {
+	height: 400px;
+}
+
 .signup-wrapper {
 	margin: 200px auto;
 	width: 25%;
 	height: 100%;
 	overflow: auto;
-	background: #ddd;
+	/*background: #ddd;*/
 }
 
 .signup-wrapper form {
 	width: 90%;
 	margin: auto;
 	padding: 10%;
+	background: #ddd;
 }
 
 form * {

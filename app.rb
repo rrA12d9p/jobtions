@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 require 'sinatra/activerecord'
 
 require_relative "./models/questions.rb"
+require_relative "./models/job_categories.rb"
 require_relative  'config/environments.rb'
 
 require_relative "./models/job"
@@ -13,10 +14,48 @@ enable :sessions
 
 before do
 	session[:user] ||= []
+  # clear the session if the user no longer exists in the db
+  if !session[:user].empty? && session[:user].has_key?(:id)
+    user_id = session[:user][:id]
+    user = User.find(user_id)
+    @logged_in = session[:user] != []
+    session.clear if @logged_in && user == nil
+  end
+end
+
+helpers do
+
+  def require_login
+    redirect "/" if !@logged_in
+  end
+
+  def require_personality
+    require_login
+    user_id = session[:user][:id]
+    user = User.find(user_id)
+    existing_personality = Personality.find_by(user_id: user_id)
+    redirect "/#{user.username}/questionnaire" if !existing_personality
+  end
+
+  def require_job
+    require_login
+    user_id = session[:user][:id]
+    user = User.find(user_id)
+    existing_job = Job.find_by(user_id: user_id)
+    redirect "/#{user.username}/profile" if !existing_job
+  end
 end
 
 get '/' do
-	return erb :index
+  if @logged_in
+    require_personality
+    require_job
+    @current_user = User.find(session[:user][:id])  
+    @users = User.all
+    return erb :user_home
+  else
+	 return erb :index
+  end
 end
 
 get '/:username/questionnaire' do
@@ -73,30 +112,40 @@ post "/signup" do
   redirect '/'
 end
 
-get "/:username/home" do 
-  redirect '/' if session[:user] == [] || params[:username] != session[:user][:username]
-  user = User.find(session[:user][:id])  
-  existing_personality = Personality.find_by(user_id: user.id)
+post "/:username/profile/update" do
+  @own_profile = session[:user][:username] == params[:username]
 
-  redirect "/#{params[:username]}/questionnaire" if !existing_personality
+  if @own_profile
+    existing_job = Job.find_by(user_id: user.id)
 
-  return erb :user_home
+    params = {job_title: job_title, years_experience: years_experience, category: category, salary: salary, user_id: user.id}
+
+    if existing_job
+      user.job.update(params)
+    else
+      job = Job.create(params)
+    end
+  end
 end
 
 get "/:username/profile" do 
+  require_login
+  require_personality
+
+  @job_categories = JobCategories::ALL.sort_by {|k, v| k[:category]}
+
   @own_profile = session[:user][:username] == params[:username]
 
   @user = User.find_by(username: params[:username])
-  redirect '/' if session[:user] == [] || @user == nil # users can view each others' profiles
-  
-  @existing_personality = Personality.find_by(user_id: @user.id)
 
-  redirect "/#{params[:username]}/questionnaire" if !@existing_personality
+  # users can view each others' profiles but need to be logged in
+  redirect '/' if session[:user] == [] || @user == nil 
 
   return erb :user_profile
 end
 
 post "/save-questionnaire" do
+  require_login
   user = User.find(session[:user][:id])
 
   return "error" if user == nil
@@ -106,13 +155,20 @@ post "/save-questionnaire" do
 
   personality = {extraversion: 0, agreeableness: 0, conscientiousness: 0, emotional_stability: 0, intellect_imagination: 0}
   
-  extraversion_questions = []
-
   answers.each_with_index do |arr, i|
     value = arr[1].to_i
     trait = questions[i][:category].to_sym
     change = questions[i][:value].to_i
     personality[trait] += value * change
+  end
+
+  # convert each total to a percentage
+  questions_per_trait = 20
+  max_score = 4
+  max_trait_score = questions_per_trait * max_score
+
+  personality.each do |k,v|
+    personality[k] = (v.to_f/max_trait_score.to_f * 100).round(2)
   end
 
   params = {extraversion: personality[:extraversion], agreeableness: personality[:agreeableness], conscientiousness: personality[:conscientiousness], emotional_stability: personality[:emotional_stability], intellect_imagination: personality[:intellect_imagination], user_id: user.id}

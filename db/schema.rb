@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20141215015919) do
     t.text    "conscientiousness",     null: false
     t.text    "emotional_stability",   null: false
     t.text    "intellect_imagination", null: false
-    t.text    "mbti"
     t.integer "user_id"
   end
 
@@ -40,6 +39,7 @@ ActiveRecord::Schema.define(version: 20141215015919) do
     t.text   "username",        null: false
     t.text   "email",           null: false
     t.string "password_digest", null: false
+    t.text   "image_url"
     t.text   "zipcode",         null: false
     t.text   "name"
   end

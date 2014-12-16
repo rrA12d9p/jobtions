@@ -8,7 +8,7 @@
 			<a class="btn-main" href="/signin">Sign in</a>
 			<a class="btn-main" href="/signup">Create an account</a>
 		<% else %>
-			<a class="btn-main" href="/<%= session[:user][:username] %>/home">Home</a>
+			<a class="btn-main" href="/">Home</a>
 			<a class="btn-main" href="/<%= session[:user][:username] %>/profile">Profile</a>
 			<a class="btn-main" href="/signout">Sign out</a>
 		<% end %>

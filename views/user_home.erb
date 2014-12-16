@@ -1,1 +1,45 @@
+<script type="text/javascript" src="/js/helper.js"></script>
+<script>loadCSS("/css/user_home.css")</script>
+
 <%= erb(:header, :layout => false) %>
+
+<div class="clear-header"></div>
+
+<div class="main-container">
+	
+	<section class="profile-main">
+
+		<h1 class="center"> All users </h1>
+		
+		<div id="tableContainer" class="tableContainer">
+	<table border="0" cellpadding="0" cellspacing="0" class="scrollTable">
+	<thead>
+		<tr>
+		  <th><a href="#">User</a></th>
+		  <th><a href="#">Similarity</a></th>
+		</tr>
+	</thead>
+	<tbody>
+		
+		<% @users.each_with_index do |u,i| %>
+			<% similarity = @current_user.get_similarity(u) %>
+			<% if similarity != false && u != @current_user %>
+				<tr>
+					<td><a href="/<%=u.username%>/profile"><%=u.username%></a></td>
+					<td><%= @current_user.get_similarity(u) %>%</td>
+				</tr>
+			<% end %>
+		<% end %>
+
+	</tbody>
+	</table>
+
+	</div>
+
+	</section>
+
+	<aside>
+		
+	</aside>
+
+</div>
