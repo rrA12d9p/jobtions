@@ -1,11 +1,29 @@
 <script>loadCSS("/css/search.css")</script>
 <script>loadCSS("/css/ratings.css")</script>
 
-<!-- include jquery tree plugin -->
-<script type="text/javascript" src="/js/plugins/jquery-tree/jquery.tree.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/js/plugins/jquery-tree/jquery.tree.min.css" />
+<script>loadCSS("/css/mixitup.css")</script>
+<script type="text/javascript" src="/js/plugins/mixitup/build/jquery.mixitup.min.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+  	$('#Container').mixItUp();
+	});
+</script>
 
 <%= erb(:header, :layout => false) %>
+
+<div class="controls">
+  <label>Filter:</label>
+  
+  <button class="filter" data-filter="all">All</button>
+  <button class="filter" data-filter=".category-1">Category 1</button>
+  <button class="filter" data-filter=".category-2">Category 2</button>
+  
+  <label>Sort:</label>
+  
+  <button class="sort" data-sort="myorder:asc">Asc</button>
+  <button class="sort" data-sort="myorder:desc">Desc</button>
+</div>
 
 <div class="main-container">
 
@@ -68,22 +86,26 @@
 	
 	<section class="profile-main">
 
-		<% @users.each_with_index do |u,i| %>
-			<% similarity = @current_user.get_similarity(u) %>
-			<% if similarity != false && u != @current_user %>
-				<div class="user-card">
-					<span class="image"><img src="<%= u.image_url %>"></span>
-					<span class="username"><%= u.username %></span>
-					<span class="similarity"><%= @current_user.get_similarity(u) %>%</span>
-					<span class="jobtitle"><%= u.job.job_title %></span>
-					<span class="satisfaction"><%= u.job.satisfaction %></span>
-					<span class="years_experience"><%= u.job.years_experience %></span>
-					<span class="category"><%= u.job.category %></span>
-					<span class="salary"><%= u.job.salary %></span>
-					<span class="company"><%= u.job.company %></span>
-				</div>
+		<div id="Container" class="container">
+			<% @users.each_with_index do |u,i| %>
+				<% similarity = @current_user.get_similarity(u) %>
+				<% if similarity != false && u != @current_user %>
+					<div data-myorder="<%= i+1 %>" class="mix user-card <%= @current_user.get_similarity(u) %> <%= u.job.satisfaction %> <%= u.job.years_experience %> <%= u.job.category %> <%= u.job.salary %> <%= u.job.company %>">
+						<span class="image"><img src="<%= u.image_url %>"></span>
+						<span class="username"><%= u.username %></span>
+						<span class="similarity"><%= @current_user.get_similarity(u) %>%</span>
+						<span class="jobtitle"><%= u.job.job_title %></span>
+						<span class="satisfaction"><%= u.job.satisfaction %></span>
+						<span class="years_experience"><%= u.job.years_experience %></span>
+						<span class="category"><%= u.job.category %></span>
+						<span class="salary"><%= u.job.salary %></span>
+						<span class="company"><%= u.job.company %></span>
+					</div>
+				<% end %>
 			<% end %>
-		<% end %>
+		<div class="gap"></div>
+ 	 	<div class="gap"></div>
+		</div>
 
 	</section>
 

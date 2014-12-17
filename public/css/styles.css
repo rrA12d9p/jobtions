@@ -128,8 +128,9 @@ body .btn-main {
 .page-wrap {
   min-height: 100%;
   overflow: auto;
+  margin-bottom: 40px;
   /* equal to footer height */
-  margin-bottom: -40px; 
+  /*margin-bottom: -40px; */
 }
 .page-wrap:after {
   content: "";
