@@ -80,7 +80,7 @@ body .btn-main {
 	height: 100%;
 	margin: auto;
 	background: #fff;
-	overflow: auto;
+	overflow: visible;
 }
 
 .cover {
@@ -128,7 +128,7 @@ footer{
 	background: #eee;
 	text-align: center;
 	padding: 20px;
-
+	clear: both;
 
 	width: 100%;
 }

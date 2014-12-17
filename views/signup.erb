@@ -10,6 +10,36 @@
 		<input type="password" placeholder="confirm password" name="confirm_password">
 		<input type="text" placeholder="zipcode" name="zipcode">
 
+		<input type="text" name="job_title" placeholder="Job title"></input>
+		
+		<select required>
+			<option value="" disabled selected>Job category</option>
+			<% @job_categories.each do |job| %>
+				<option value=<%=job[:category]%>><%=job[:category]%></option>
+			<% end %>
+		</select>
+
+		<select required>
+			<option value="" disabled selected>Job satisfaction</option>
+			<option value="very_satisfied">Very satisfied</option>
+			<option value="somewhat_satisfied">Somewhat satisfied</option>
+			<option value="satisfied">Satisfied</option>
+			<option value="very_dissatisfied">Very dissatisfied</option>
+			<option value="somewhat_dissatisfied">Somewhat dissatisfied</option>
+			<option value="dissatisfied">Dissatisfied</option>
+		</select>
+
+		<select required>
+			<option value="" disabled selected>Salary</option>
+			<option value="100">$100,000+</option>
+			<option value="80-100">$80,000 - $100,000</option>
+			<option value="50-80">$50,000 - $80,000</option>
+			<option value="30-50">$30,000 - $50,000</option>
+			<option value="0-30">&lt; $30,000</option>
+		</select>
+
 		<input type="submit" value="Sign up">
 	</form>
+
 </div>
+

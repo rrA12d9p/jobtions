@@ -6,11 +6,22 @@
 <div class="clear-header"></div>
 
 <div class="main-container">
+
+	<aside>
+		<div class="profile-picture"></div>
+
+		<h1 class="center"> <%= @user.username %> </h1>
+
+		<input class="sidebar-input" type="text" name="name" placeholder="Name"></input>
+		<input class="sidebar-input" type="text" name="zipcode" placeholder="Zipcode"></input>
+
+		<input class="sidebar-button" type="submit" value="Update"></input>
+
+	</aside>
 	
 	<section class="profile-main">
 
-		<h1 class="center"> <%= @user.username %> </h1>
-		<ul>
+		<ul class="fancy-list">
 			<li>Extraversion: <%= @user.personality.extraversion %>%</li>
 			<li>Agreeableness: <%= @user.personality.agreeableness %>%</li>
 			<li>Conscientiousness: <%= @user.personality.conscientiousness %>%</li>
@@ -18,41 +29,7 @@
 			<li>Intellect/Imagination: <%= @user.personality.intellect_imagination %>%</li>
 		</ul>
 
-		<% if @own_profile %>
-			<a class="btn-main" href="/<%=session[:user][:username]%>/questionnaire">Retake</a>
-		<% end %>
-
-	<form>
-		<input type="text" name="job_title" placeholder="Job title"></input>
-		<input type="text" name="satisfaction" placeholder="Job satisfaction"></input>
-		
-		<input type="text" name="salary" placeholder="Job salary"></input>
-
-		<select required>
-			Six Figure Income jobs  ($100,000+)
- 		 High Income jobs  ($80,000 - $100,000)
- 		 Upper Middle Income jobs  ($50,000 - $80,000)
- 		 Middle Income jobs  ($30,000 - $50,000)
- 		 Entry Level Income jobs  ($10,000 - $30,000)
-
-		</select>
-
-		<select required>
-			<option value="" disabled selected>Job category</option>
-			<% @job_categories.each do |job| %>
-				<option value=""><%=job[:category]%></option>
-			<% end %>
-		</select>
-
-		<input type="submit" value="Update"></input>
-	</form>
-
 	</section>
 
-	<aside>
-		<div class="profile-picture">
-			<!-- <i class="icon-smile"></i> -->
-		</div>
-	</aside>
 
 </div>

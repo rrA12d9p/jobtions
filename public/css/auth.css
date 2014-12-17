@@ -1,12 +1,12 @@
-body {
-	height: 400px;
+html, body {
+	height: 80%;
 }
 
 .signup-wrapper {
 	margin: 200px auto;
-	width: 25%;
+	width: 400px;
 	height: 100%;
-	overflow: auto;
+	overflow: visible;
 	/*background: #ddd;*/
 }
 
@@ -19,8 +19,33 @@ body {
 
 form * {
 	font-size: 1.1em;
-	margin: 5px auto;
-	padding: 10px;
+	margin: 7px auto;
+	padding: 7px;
+	height: 40px;
 	width: 100%;
 	display: block;
+	color: #2B78E4;
+}
+
+::-webkit-input-placeholder {
+   color: #2B78E4;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #2B78E4;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #2B78E4; 
+}
+
+:-ms-input-placeholder {  
+   color: #2B78E4;
+}
+
+form select {
+	height: 40px;
+	border: 0px solid black;
+	background: #fff;
+	
 }

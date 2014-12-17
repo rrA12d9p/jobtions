@@ -4,11 +4,13 @@ require 'sinatra/activerecord'
 
 require_relative "./models/questions.rb"
 require_relative "./models/job_categories.rb"
-require_relative  'config/environments.rb'
+require_relative "config/environments.rb"
 
 require_relative "./models/job"
 require_relative "./models/personality"
 require_relative "./models/user"
+
+require_relative "./routes"
 
 enable :sessions
 
@@ -17,14 +19,15 @@ before do
   # clear the session if the user no longer exists in the db
   if !session[:user].empty? && session[:user].has_key?(:id)
     user_id = session[:user][:id]
-    user = User.find(user_id)
+    @current_user = User.find(user_id)
     @logged_in = session[:user] != []
-    session.clear if @logged_in && user == nil
+    session.clear if @logged_in && @current_user == nil
+  else
+    @current_user = nil
   end
 end
 
 helpers do
-
   def require_login
     redirect "/" if !@logged_in
   end
@@ -70,6 +73,7 @@ get '/signin' do
 end
 
 get '/signup' do
+  @job_categories = JobCategories::ALL.sort_by {|k, v| k[:category]}
 	return erb :signup
 end
 
@@ -115,6 +119,7 @@ end
 post "/:username/profile/update" do
   @own_profile = session[:user][:username] == params[:username]
 
+
   if @own_profile
     existing_job = Job.find_by(user_id: user.id)
 
@@ -131,8 +136,6 @@ end
 get "/:username/profile" do 
   require_login
   require_personality
-
-  @job_categories = JobCategories::ALL.sort_by {|k, v| k[:category]}
 
   @own_profile = session[:user][:username] == params[:username]
 
