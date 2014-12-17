@@ -25,11 +25,11 @@ html, body {
 /*=======*/
 
 div.main-container {
-	margin: 15px auto;
+	margin: 15px auto 0 auto;
 	width: 1015px;
 	height: 100%;
 	background: #333;
-	/*overflow-y: scroll*/
+	overflow: auto;
 }
 
 .profile-main {
@@ -39,7 +39,7 @@ div.main-container {
 	/*min-height: 600px;*/
 	overflow-y: scroll;
 	background: #fff;
-	padding: 10px 40px;
+	padding: 25px;
 }
 
 .profile-main h1{
@@ -68,15 +68,23 @@ header {
 }
 
 aside {
-	height: 100%;
+	height: 600px;
 	min-height: 600px;
 	width: 300px;
 	margin-right: 15px;
 	min-width: 200px;
 	float: left;
-	overflow: auto;
-	background: #2B78E4;
+	overflow-y: scroll;
+	background: #fff;
 	padding: 20px;
+}
+
+.filter-wrapper {
+	padding: 20px 0 0 20px;
+}
+
+aside .checkbox-group {
+	display: block;
 }
 
 aside .profile-picture{
@@ -86,3 +94,15 @@ aside .profile-picture{
 	margin: 30px auto 20px auto;
 	background: url("http://placehold.it/200x200");
 }
+
+/* 'star-rating' component */
+.starRate {position:relative; margin:20px; overflow:hidden; zoom:1;}
+.starRate ul {width:160px; margin:0; padding:0;}
+.starRate li {display:inline; list-style:none;}
+.starRate a, .starRate b {background:url(img/star_rate.gif) left top repeat-x;}
+.starRate a {float:right; margin:0 80px 0 -144px; width:80px; height:16px; background-position:left 16px; color:#000; text-decoration:none;}
+.starRate a:hover {background-position:left -32px;}
+.starRate b {position:absolute; z-index:-1; width:80px; height:16px; background-position:left -16px;}
+.starRate div b {left:0px; bottom:0px; background-position:left top;}
+.starRate a span {position:absolute; left:-300px;}
+.starRate a:hover span {left:90px; width:100%;}

@@ -38,7 +38,7 @@ aside {
 	margin-right: 15px;
 	min-width: 200px;
 	float: left;
-	overflow: visible;
+	overflow: auto;
 	background: #2B78E4;
 	padding: 20px;
 }

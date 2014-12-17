@@ -58,6 +58,7 @@ end
 get '/search' do
   require_personality
   require_job
+  @job_categories = JobCategories::ALL.sort_by {|k, v| k[:category]}
   @current_user = User.find(session[:user][:id])  
   @users = User.all
   return erb :search

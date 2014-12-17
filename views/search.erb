@@ -1,12 +1,70 @@
 <script type="text/javascript" src="/js/helper.js"></script>
 <script>loadCSS("/css/search.css")</script>
+<script>loadCSS("/css/ratings.css")</script>
+
+<!-- include jquery tree plugin -->
+<script type="text/javascript" src="/js/plugins/jquery-tree/jquery.tree.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/js/plugins/jquery-tree/jquery.tree.min.css" />
 
 <%= erb(:header, :layout => false) %>
 
 <div class="main-container">
 
 	<aside>
+
+	<div class="filter-wrapper">
+		<input type="button" id="update" value="Update">
+
+		<p>Min. satisfaction</p>
 		
+		<div class="starRating">
+		  <div>
+		    <div>
+		      <div>
+		        <div>
+		          <input id="rating1" type="radio" name="rating" value="1">
+		          <label for="rating1"><span>1</span></label>
+		        </div>
+		        <input id="rating2" type="radio" name="rating" value="2">
+		        <label for="rating2"><span>2</span></label>
+		      </div>
+		      <input id="rating3" type="radio" checked name="rating" value="3">
+		      <label for="rating3"><span>3</span></label>
+		    </div>
+		    <input id="rating4" type="radio" name="rating" value="4">
+		    <label for="rating4"><span>4</span></label>
+		  </div>
+		  <input id="rating5" type="radio" name="rating" value="5">
+		  <label for="rating5"><span>5</span></label>
+		</div>
+
+		<p>Years experience</p>
+		<div class="years_experience">
+			<input type="number" id="years_experience_min" min=0>
+			<input type="number" id="years_experience_max" min=0>
+		</div>
+		
+		<p>Min. salary</p>
+		<select required name="min_salary">
+			<option value="100">$100,000</option>
+			<option value="80">$80,000</option>
+			<option value="50">$50,000</option>
+			<option value="30" selected>$30,000</option>
+			<option value="0">$0</option>
+		</select>
+
+		<section class="categories">
+		<p>Categories</p>
+			<% @job_categories.each_with_index do |job,i| %>
+			<div class="checkbox-group">
+				<input id="<%=i%>" type="checkbox" checked value=<%=job[:category]%>>
+				<label for="<%=i%>"><%=job[:category]%></label>
+			</div>
+			<% end %>
+		</section>
+
+	</div>
+
 	</aside>
 	
 	<section class="profile-main">

@@ -69,7 +69,7 @@ body .btn-main {
 }
 
 .content {
-	overflow: visible;
+	overflow: auto;
 	padding: 40px 40px 100px 40px;
 	text-align: center;
 }
@@ -79,7 +79,7 @@ body .btn-main {
 	height: 100%;
 	margin: auto;
 	background: #fff;
-	overflow: visible;
+	overflow: auto;
 }
 
 .cover {
@@ -137,7 +137,6 @@ body .btn-main {
 }
 .site-footer, .page-wrap:after {
 	clear: both;
-  height: 40px; 
 }
 .site-footer {
 	clear: both;
