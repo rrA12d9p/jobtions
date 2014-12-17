@@ -3,6 +3,7 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  margin: 0;
 }
 .clearfix:after {
   content: "";
@@ -10,7 +11,7 @@
   clear: both;
 }
 
-html,body { height:100%; }
+/*html,body { height:100%; }*/
 
 a {
 	text-decoration: none;
@@ -71,12 +72,13 @@ body .btn-main {
 
 .content {
 	overflow: visible;
-	padding: 40px;
+	padding: 40px 40px 100px 40px;
 	text-align: center;
 }
 
 .main-container {
 	width: 80%;
+	height: 100%;
 	margin: auto;
 	background: #fff;
 	overflow: visible;
@@ -110,7 +112,7 @@ body .btn-main {
 }
 
 .cover-text {
-	padding-top: 20%;
+	padding-top: 100px;
 	margin: auto;
 	height: 100%;
 	width: 85%;
@@ -123,19 +125,31 @@ body .btn-main {
 	margin: 0;
 }
 
-footer{
-	background: #eee;
-	text-align: center;
-	padding: 20px;
-	clear: both;
+/*====footer====*/
 
-	width: 100%;
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -40px; 
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  height: 40px; 
+}
+.site-footer {
+  background: #eee;
+  text-align: center;
 }
 
-footer p, a {
-	margin: 0;
-	color: #666;
+.site-footer a{
+	display: inline-block;
+	line-height: 40px;
 }
+
+/*====footer====*/
 
 header {
 	font-size: 2em;

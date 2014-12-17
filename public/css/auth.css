@@ -1,13 +1,12 @@
 html, body {
-	height: 80%;
+	height: 100%;
 }
 
 .signup-wrapper {
-	margin: 200px auto;
+	padding: 150px 0 150px 0;
+	margin: auto;
 	width: 400px;
 	height: 100%;
-	overflow: visible;
-	/*background: #ddd;*/
 }
 
 .signup-wrapper form {
@@ -47,5 +46,4 @@ form select {
 	height: 40px;
 	border: 0px solid black;
 	background: #fff;
-	
 }

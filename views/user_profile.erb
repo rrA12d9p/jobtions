@@ -3,19 +3,12 @@
 
 <%= erb(:header, :layout => false) %>
 
-<div class="clear-header"></div>
-
 <div class="main-container">
 
 	<aside>
 		<div class="profile-picture"></div>
 
 		<h1 class="center"> <%= @user.username %> </h1>
-
-		<input class="sidebar-input" type="text" name="name" placeholder="Name"></input>
-		<input class="sidebar-input" type="text" name="zipcode" placeholder="Zipcode"></input>
-
-		<input class="sidebar-button" type="submit" value="Update"></input>
 
 	</aside>
 	

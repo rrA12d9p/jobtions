@@ -52,15 +52,15 @@ helpers do
 end
 
 get '/' do
-  if @logged_in
-    require_personality
-    require_job
-    @current_user = User.find(session[:user][:id])  
-    @users = User.all
-    return erb :user_home
-  else
-	 return erb :index
-  end
+  return erb :index
+end
+
+get '/search' do
+  require_personality
+  require_job
+  @current_user = User.find(session[:user][:id])  
+  @users = User.all
+  return erb :user_home
 end
 
 get '/:username/questionnaire' do
