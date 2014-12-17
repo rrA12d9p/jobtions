@@ -114,15 +114,11 @@ post "/signup" do
     
     job = Job.new(job_title: params[:job_title], category: params[:job_category], satisfaction: params[:job_satisfaction], salary: params[:job_salary], years_experience: params[:job_experience], user_id: user.id)
     if job.save
-      puts "*Saved the job!"
     else
-      puts "*couldn't save job"
-      p job
       @errors = user.errors.full_messages
       puts @errors
     end
   else
-    puts "*couldn't save user"
   	@errors = user.errors.full_messages
   	puts @errors
   end

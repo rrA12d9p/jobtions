@@ -72,7 +72,7 @@
 		<% @users.each_with_index do |u,i| %>
 			<% similarity = @current_user.get_similarity(u) %>
 			<% if similarity != false && u != @current_user %>
-				<div class="user-card">
+				<div class="user-card <%=@current_user.get_similarity(u)%> <%=u.job.satisfaction %> <%= u.job.category %> <%= u.job.salary %> <%= u.job.years_experience %>">
 					<span class="image"><img src="<%= u.image_url %>"></span>
 					<span class="username"><%= u.username %></span>
 					<span class="similarity"><%= @current_user.get_similarity(u) %>%</span>
