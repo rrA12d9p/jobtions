@@ -55,6 +55,10 @@ get '/' do
   return erb :index
 end
 
+get '/mixituptest' do
+  return erb :mixituptest
+end
+
 get '/search' do
   require_personality
   require_job
