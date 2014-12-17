@@ -70,14 +70,13 @@ body .btn-main {
 }
 
 .content {
-	overflow: auto;
+	overflow: visible;
 	padding: 40px;
 	text-align: center;
 }
 
 .main-container {
 	width: 80%;
-	height: 100%;
 	margin: auto;
 	background: #fff;
 	overflow: visible;
@@ -227,6 +226,7 @@ header nav li a {
 /* 4 span rows */
 .row-4 {
   padding-left: 60px;
+  overflow: visible;
 }
 .row-4 [class*="col-"]:first-child {
   margin-left: -60px;
