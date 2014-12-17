@@ -60,7 +60,7 @@ get '/search' do
   require_job
   @current_user = User.find(session[:user][:id])  
   @users = User.all
-  return erb :user_home
+  return erb :search
 end
 
 get '/:username/questionnaire' do

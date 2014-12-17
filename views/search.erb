@@ -1,0 +1,33 @@
+<script type="text/javascript" src="/js/helper.js"></script>
+<script>loadCSS("/css/search.css")</script>
+
+<%= erb(:header, :layout => false) %>
+
+<div class="main-container">
+
+	<aside>
+		
+	</aside>
+	
+	<section class="profile-main">
+
+		<% @users.each_with_index do |u,i| %>
+			<% similarity = @current_user.get_similarity(u) %>
+			<% if similarity != false && u != @current_user %>
+				<div class="user-card">
+					<span class="image"><img src="<%= u.image_url %>"></span>
+					<span class="username"><%= u.username %></span>
+					<span class="similarity"><%= @current_user.get_similarity(u) %>%</span>
+					<span class="jobtitle"><%= u.job.job_title %></span>
+					<span class="satisfaction"><%= u.job.satisfaction %></span>
+					<span class="years_experience"><%= u.job.years_experience %></span>
+					<span class="category"><%= u.job.category %></span>
+					<span class="salary"><%= u.job.salary %></span>
+					<span class="company"><%= u.job.company %></span>
+				</div>
+			<% end %>
+		<% end %>
+
+	</section>
+
+</div>

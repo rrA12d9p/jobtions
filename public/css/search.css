@@ -1,0 +1,88 @@
+html, body {
+	height: 100%;
+}
+
+.user-card {
+	margin: 5px;
+	border: 1px solid black;
+	height: 75px;
+	padding: 10px;
+}
+
+.user-card img {
+	margin-right: 10px;
+	float: left;
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	border: 1px solid black;
+}
+
+.user-card span {
+
+}
+
+/*=======*/
+
+div.main-container {
+	margin: 15px auto;
+	width: 1015px;
+	height: 100%;
+	background: #333;
+	/*overflow-y: scroll*/
+}
+
+.profile-main {
+	float: left;
+	width: 700px;
+	max-height: 600px;
+	/*min-height: 600px;*/
+	overflow-y: scroll;
+	background: #fff;
+	padding: 10px 40px;
+}
+
+.profile-main h1{
+	font-size: 2em;
+}
+
+body .profile-main a.btn-main{
+	font-size: .8em;
+	padding: 15px;
+	display: inline-block;
+}
+
+.profile-main ul {
+	list-style: none;
+	padding: 0;
+}
+
+i.icon-smile {
+	font-size: 8em;
+	text-align: center;
+	line-height: 200px;
+}
+
+header {
+	min-width: 700px;
+}
+
+aside {
+	height: 100%;
+	min-height: 600px;
+	width: 300px;
+	margin-right: 15px;
+	min-width: 200px;
+	float: left;
+	overflow: auto;
+	background: #2B78E4;
+	padding: 20px;
+}
+
+aside .profile-picture{
+	padding: 0;
+	width: 200px;
+	height: 200px;
+	margin: 30px auto 20px auto;
+	background: url("http://placehold.it/200x200");
+}

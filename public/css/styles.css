@@ -11,8 +11,6 @@
   clear: both;
 }
 
-/*html,body { height:100%; }*/
-
 a {
 	text-decoration: none;
 }
@@ -129,6 +127,7 @@ body .btn-main {
 
 .page-wrap {
   min-height: 100%;
+  overflow: auto;
   /* equal to footer height */
   margin-bottom: -40px; 
 }
@@ -137,9 +136,11 @@ body .btn-main {
   display: block;
 }
 .site-footer, .page-wrap:after {
+	clear: both;
   height: 40px; 
 }
 .site-footer {
+	clear: both;
   background: #eee;
   text-align: center;
 }
