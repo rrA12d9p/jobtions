@@ -10,8 +10,6 @@ require_relative "./models/job"
 require_relative "./models/personality"
 require_relative "./models/user"
 
-require_relative "./routes"
-
 enable :sessions
 
 before do
@@ -19,9 +17,13 @@ before do
   # clear the session if the user no longer exists in the db
   if !session[:user].empty? && session[:user].has_key?(:id)
     user_id = session[:user][:id]
-    @current_user = User.find(user_id)
-    @logged_in = session[:user] != []
-    session.clear if @logged_in && @current_user == nil
+    if !User.exists?(user_id)
+      session.clear
+      session[:user] ||= []
+    else
+      @current_user = User.find(user_id)
+      @logged_in = session[:user] != []
+    end
   else
     @current_user = nil
   end
@@ -108,7 +110,18 @@ post "/signup" do
 
   if user.save
   	session[:user] = {id: user.id, email: email, username: username }
+    
+    job = Job.new(job_title: params[:job_title], category: params[:job_category], satisfaction: params[:job_satisfaction], salary: params[:job_salary], years_experience: params[:job_experience], user_id: user.id)
+    if job.save
+      puts "*Saved the job!"
+    else
+      puts "*couldn't save job"
+      p job
+      @errors = user.errors.full_messages
+      puts @errors
+    end
   else
+    puts "*couldn't save user"
   	@errors = user.errors.full_messages
   	puts @errors
   end
@@ -116,22 +129,22 @@ post "/signup" do
   redirect '/'
 end
 
-post "/:username/profile/update" do
-  @own_profile = session[:user][:username] == params[:username]
+# post "/:username/profile/update" do
+#   @own_profile = session[:user][:username] == params[:username]
 
 
-  if @own_profile
-    existing_job = Job.find_by(user_id: user.id)
+#   if @own_profile
+#     existing_job = Job.find_by(user_id: user.id)
 
-    params = {job_title: job_title, years_experience: years_experience, category: category, salary: salary, user_id: user.id}
+#     params = {job_title: job_title, years_experience: years_experience, category: category, salary: salary, user_id: user.id}
 
-    if existing_job
-      user.job.update(params)
-    else
-      job = Job.create(params)
-    end
-  end
-end
+#     if existing_job
+#       user.job.update(params)
+#     else
+#       job = Job.create(params)
+#     end
+#   end
+# end
 
 get "/:username/profile" do 
   require_login
