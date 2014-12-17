@@ -32,7 +32,7 @@ button{
 }
 
 button.active{
-  background: #68b8c4;
+  background: #fff;
 }
 
 button:focus{
@@ -47,7 +47,7 @@ button + label{
   padding: 2% 2% 0;
   text-align: justify;
   font-size: 0.1px;
-  background: #68b8c4;
+  background: #fff;
   
   -webkit-backface-visibility: hidden;
 }
@@ -66,7 +66,7 @@ button + label{
 
 .container .mix{
   text-align: left;
-  background: #03899c;
+  background: #2B78E4;
   margin-bottom: 2%;
   display: none;
 }

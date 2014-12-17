@@ -90,7 +90,7 @@
 			<% @users.each_with_index do |u,i| %>
 				<% similarity = @current_user.get_similarity(u) %>
 				<% if similarity != false && u != @current_user %>
-					<div data-myorder="<%= i+1 %>" class="mix user-card <%= @current_user.get_similarity(u) %> <%= u.job.satisfaction %> <%= u.job.years_experience %> <%= u.job.category %> <%= u.job.salary %> <%= u.job.company %>">
+					<div data-myorder="<%= similarity %>" class="mix user-card <%= @current_user.get_similarity(u) %> <%= u.job.satisfaction %> <%= u.job.years_experience %> <%= u.job.category %> <%= u.job.salary %> <%= u.job.company %>">
 						<span class="image"><img src="<%= u.image_url %>"></span>
 						<span class="username"><%= u.username %></span>
 						<span class="similarity"><%= @current_user.get_similarity(u) %>%</span>
