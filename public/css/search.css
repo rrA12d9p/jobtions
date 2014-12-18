@@ -4,25 +4,36 @@ html, body {
 }
 
 button {
+	background: #ddd;
 	border: none;
 	font-size: 1.1em;
 	margin: 7px auto;
-	padding: 7px;
-	height: 40px;
-	width: 100%;
-	display: block;
+	padding: 15px;
+	height: auto;
+	width: 127px;
+	display: inline-block;
 	color: #fff;
 }
 
-button.asc {
-	background: #13C120;
+#Reset {
+	margin-top: 20px;
+	width: 100%;
+	background: #C71E13;
+	color: #fff;
 }
 
 button.desc {
+	background: #13C120;
+}
+
+button.asc {
 	background: #C71E13;
 }
 
 fieldset {
+	margin: 0;
+	padding: 0;
+	padding-top: 10px;
 	border: none;
 }
 
@@ -47,14 +58,16 @@ div.checkbox label{
 	display: block;
 }
 
-.user-card img {
+.user-card .image, img {
 	float: left;
 	width: 100px;
 	height: auto;
+	margin-right: 10px;
 }
 
 .user-card p {
 	float: left;
+	width: 250px;
 	font-size: 1rem;
 }
 
@@ -68,9 +81,15 @@ div.main-container {
 	overflow: auto;
 }
 
+.mix {
+	width: 100%;
+	display: block;
+}
+
 #Container div {
 	height: auto;
-	width: 100%;
+	display: inline-block;
+	float: left;
 }
 
 div .mix {
@@ -126,7 +145,8 @@ aside {
 }
 
 .filter-wrapper {
-	padding: 20px 0 0 20px;
+	padding: 0;
+	margin: auto;
 }
 
 aside .checkbox-group {

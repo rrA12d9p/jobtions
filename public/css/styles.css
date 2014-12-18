@@ -11,6 +11,14 @@
   clear: both;
 }
 
+body, html {
+	height: 100%;
+}
+
+input, button:focus {
+    outline:none;
+}
+
 a {
 	text-decoration: none;
 }
@@ -129,8 +137,8 @@ body .btn-main {
 .page-wrap {
   min-height: 100%;
   overflow: auto;
-  margin-bottom: 40px;
-  /* equal to footer height */
+  /*margin-bottom: 40px;*/
+   /*equal to footer height */
   /*margin-bottom: -40px; */
 }
 .page-wrap:after {

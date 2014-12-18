@@ -23,8 +23,9 @@ $(document).ready(function(){
 
 	<div class="filter-wrapper">
   
-  <button class="sort asc" data-sort="myorder:asc">Most similar</button>
-  <button class="sort desc" data-sort="myorder:desc">Least similar</button>
+  <h4>Similarity</h4>
+  <button class="sort asc" data-sort="myorder:asc">Least</button>
+  <button class="sort desc" data-sort="myorder:desc">Most</button>
 
 	<form class="controls" id="Filters">
   <!-- We can add an unlimited number of "filter groups" using the following format: -->
@@ -34,32 +35,32 @@ $(document).ready(function(){
     <div class="checkbox">
       <label>
       	<input type="checkbox" checked value=".zero"/>
-      	$0</lab
+      	$0 - $30,000</lab
     	el>
     </div>
     <div class="checkbox">
       <label>
       	<input type="checkbox" checked value=".thirty"/>
-      	$30,000
+      	$30,000 - $50,000
     	</label>
     </div>
     <div class="checkbox">
       <label>
       	<input type="checkbox" checked value=".fifty"/>
-      	$50,000
+      	$50,000 - $80,000
     	</label>
     </div>
     <div class="checkbox">
       <label>
       	<input type="checkbox" checked value=".eighty"/>
-      	$80,000
+      	$80,000 - $100,000
     	</label>
     </div>
     <div class="checkbox">
       <label>
       	<input type="checkbox" checked value=".hundred"/>
-      	$100,00
-    	0</label>
+      	$100,000+
+      </label>
     </div>
   </fieldset>
 
@@ -110,7 +111,7 @@ $(document).ready(function(){
   </fieldset>
 
 
-  <button id="Reset">Clear Filters</button>
+  <button id="Reset">Reset</button>
 </form>
   
 	</div>
