@@ -133,14 +133,13 @@ $(document).ready(function(){
                 <p class="username"><%= u.username %></p>
               </div>
             <div class="card-middle">
-              <p class="jobtitle"><%= u.job.job_title %></p>
+              <div class="jobtitle"><%= u.job.job_title %></div>
               <p class="similarity"><%= @current_user.get_similarity(u) %>%</p>
             </div>
             <div class="card-right">
-              <p class="satisfaction"><%= u.job.satisfaction %></p>
-              <p class="years_experience"><%= u.job.years_experience %></p>
-              <p class="category"><%= u.job.category %></p>
-              <p class="salary"><%= u.job.salary %></p>
+              <div data="satisfaction-<%= u.job.satisfaction %>" class="satisfaction"></div>
+              <div class="category"><%= u.job.category %></div>
+              <div class="salary"><%= u.job.salary %></div>
             </div>
 					</div>
 				<% end %>
