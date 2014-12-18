@@ -109,7 +109,8 @@ end
 
 post "/signup" do
   image_url = params[:image_url]
-  image_url ||= "http://lorempixel.com/200/200/people"
+  # person = ['men', 'women'].sample + '/' + rand(1..90).to_s
+  # image_url ||= "http://api.randomuser.me/portraits/med/#{person}.jpg"
 
   user = User.new(username: params[:username], email: params[:email], password: params[:password], zipcode: params[:zipcode], image_url: image_url)
 
