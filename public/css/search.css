@@ -77,11 +77,6 @@ div.main-container {
 	overflow: auto;
 }
 
-#Container div {
-	height: auto;
-	float: left;
-}
-
 .profile-main {
 	float: left;
 	width: 700px;
