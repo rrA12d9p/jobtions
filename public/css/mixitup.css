@@ -7,6 +7,10 @@
   -webkit-backface-visibility: hidden;
 }
 
+.mix {
+  display:none;
+}
+
 .container:after{
   content: '';
   display: inline-block;
@@ -38,7 +42,7 @@
 .container .mix:before{
   content: '';
   display: inline-block;
-  padding-top: 60%;
+  /*padding-top: 60%;*/
 }
 
 @media all and (min-width: 420px){
