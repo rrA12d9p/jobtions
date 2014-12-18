@@ -1,25 +1,61 @@
 html, body {
 	height: 100%;
+	overflow: auto;
+}
+
+button {
+	border: none;
+	font-size: 1.1em;
+	margin: 7px auto;
+	padding: 7px;
+	height: 40px;
+	width: 100%;
+	display: block;
+	color: #fff;
+}
+
+button.asc {
+	background: #13C120;
+}
+
+button.desc {
+	background: #C71E13;
+}
+
+fieldset {
+	border: none;
+}
+
+div.controls {
+	text-align: right;
 }
 
 .user-card {
+	color: white;
 	margin: 5px;
 	border: 1px solid black;
-	height: 75px;
+	height: 150px;
 	padding: 10px;
+	overflow: hidden;
+}
+
+.mix .user-card div {
+	height: 20px;
+}
+
+div.checkbox label{
+	display: block;
 }
 
 .user-card img {
-	margin-right: 10px;
 	float: left;
-	display: inline-block;
-	width: 50px;
-	height: 50px;
-	border: 1px solid black;
+	width: 100px;
+	height: auto;
 }
 
-.user-card span {
-
+.user-card p {
+	float: left;
+	font-size: 1rem;
 }
 
 /*=======*/
@@ -32,11 +68,20 @@ div.main-container {
 	overflow: auto;
 }
 
+#Container div {
+	height: auto;
+	width: 100%;
+}
+
+div .mix {
+	border: 0px solid black;
+}
+
 .profile-main {
 	float: left;
 	width: 700px;
 	max-height: 600px;
-	/*min-height: 600px;*/
+	min-height: 800px;
 	overflow-y: scroll;
 	background: #fff;
 	padding: 25px;
@@ -70,7 +115,7 @@ header {
 
 aside {
 	height: 600px;
-	min-height: 600px;
+	min-height: 800px;
 	width: 300px;
 	margin-right: 15px;
 	min-width: 200px;

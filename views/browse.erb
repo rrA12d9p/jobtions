@@ -1,0 +1,151 @@
+<script>loadCSS("/css/mixitup.css")</script>
+<script>loadCSS("/css/search.css")</script>
+<script>loadCSS("/css/ratings.css")</script>
+
+<script type="text/javascript" src="/js/plugins/mixitup/build/jquery.mixitup.min.js"></script>
+<script type="text/javascript" src="/js/search.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	// inital mixitup (needs to load from session instead)
+	$('#Container').mixItUp();
+
+});
+
+</script>
+
+<%= erb(:header, :layout => false) %>
+
+<div class="main-container">
+
+	<aside>
+
+	<div class="filter-wrapper">
+  
+  <button class="sort asc" data-sort="myorder:asc">Most similar</button>
+  <button class="sort desc" data-sort="myorder:desc">Least similar</button>
+
+	<form class="controls" id="Filters">
+  <!-- We can add an unlimited number of "filter groups" using the following format: -->
+  
+  <fieldset>
+    <h4>Salary</h4>
+    <div class="checkbox">
+      <label>
+      	<input type="checkbox" checked value=".zero"/>
+      	$0</lab
+    	el>
+    </div>
+    <div class="checkbox">
+      <label>
+      	<input type="checkbox" checked value=".thirty"/>
+      	$30,000
+    	</label>
+    </div>
+    <div class="checkbox">
+      <label>
+      	<input type="checkbox" checked value=".fifty"/>
+      	$50,000
+    	</label>
+    </div>
+    <div class="checkbox">
+      <label>
+      	<input type="checkbox" checked value=".eighty"/>
+      	$80,000
+    	</label>
+    </div>
+    <div class="checkbox">
+      <label>
+      	<input type="checkbox" checked value=".hundred"/>
+      	$100,00
+    	0</label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <h4>Satisfaction</h4>
+    <div class="checkbox">
+      <label>
+      	<input type="checkbox" checked value=".very_dissatisfied"/>
+      	Very dissatisfied
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+      	<input type="checkbox" checked value=".somewhat_dissatisfied"/>
+      	Somewhat dissatisfied
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+      	<input type="checkbox" checked value=".somewhat_satisfied"/>
+      	Somewhat satisfied
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+      	<input type="checkbox" checked value=".satisfied"/>
+      	Satisfied
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+      	<input type="checkbox" checked value=".very_satisfied"/>
+      	Very satisfed
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+  <h4>Categories</h4>
+    <div class="checkbox">
+    	<% @job_categories.each do |category| %>
+    		<label>
+	    		<input type="checkbox" checked value=".<%=h(category[:category])%>"/>
+	    		<%=category[:category]%>
+    		</label>
+    	<% end %>
+    </div>
+  </fieldset>
+
+
+  <button id="Reset">Clear Filters</button>
+</form>
+  
+	</div>
+
+	</aside>
+	
+	<section class="profile-main">
+
+		<div id="Container" class="container">
+			<% i = 0 %>
+			<% @users.each do |u| %>
+				<% similarity = @current_user.get_similarity(u) %>
+				<% if similarity != false && u != @current_user %>
+					<% i += 1 %>
+					<div data-myorder="<%= similarity %>%" class="mix user-card <%= @current_user.get_similarity(u) %> <%= u.job.satisfaction %> <%= u.job.category %> <%= u.job.salary %>">
+						<div class="image"><img src="<%= u.image_url %>"></div>
+						<div class="username" longdesc="#1"><p><%= u.username %></p></div>
+						<div class="similarity"><p><%= @current_user.get_similarity(u) %>%</p></div>
+						<div class="jobtitle"><p><%= u.job.job_title %></p></div>
+						<div class="satisfaction"><p><%= u.job.satisfaction %></p></div>
+						<div class="years_experience"><p><%= u.job.years_experience %></p></div>
+						<div class="category"><p><%= u.job.category %></p></div>
+						<div class="salary"><p><%= u.job.salary %></p></div>
+						<div class="company"><p><%= u.job.company %></p></div>
+					</div>
+				<% end %>
+			<% end %>
+
+		  <div class="gap"></div>
+		  <div class="gap"></div>
+		  <div class="gap"></div>
+		  <div class="gap"></div>
+		
+		</div>
+
+	</section>
+
+</div>
