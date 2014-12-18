@@ -13,6 +13,13 @@
 
 		<h1 class="center"> <%= @user.username %> </h1>
 
+		<% if @own_profile %>
+			<div class="editControls">
+				<button id="editProfile">Edit profile</button>
+				<a href="/<%=@user.username%>/questionnaire"><button id="retakePersonality">Retake test</button></a>
+			</div>
+		<% end %>
+
 	</aside>
 	
 	<section class="profile-main">

@@ -67,7 +67,22 @@ aside .profile-picture img {
 	min-height: 600px;
 	background: #fff;
 	padding: 10px 40px;
-	overflow: auto;
+	overflow: hidden;
+}
+
+.editControls {
+	width: 100%;
+	display: block;
+	margin: auto;
+	text-align: center;
+}
+
+.editControls button {
+	margin-top: 20px;
+	font-size: 1em;
+	padding: 10px;
+	background: #fff;
+	border: none;
 }
 
 .profile-main h1{
