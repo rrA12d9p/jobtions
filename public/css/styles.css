@@ -11,6 +11,14 @@
   clear: both;
 }
 
+body, html {
+	height: 100%;
+}
+
+input, button:focus {
+    outline:none;
+}
+
 a {
 	text-decoration: none;
 }
@@ -48,6 +56,7 @@ input[type=submit] {
 body {
 	min-width: 900px;
 	background: #333;
+	overflow: auto;
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
@@ -128,8 +137,9 @@ body .btn-main {
 .page-wrap {
   min-height: 100%;
   overflow: auto;
-  /* equal to footer height */
-  margin-bottom: -40px; 
+  /*margin-bottom: 40px;*/
+   /*equal to footer height */
+  /*margin-bottom: -40px; */
 }
 .page-wrap:after {
   content: "";

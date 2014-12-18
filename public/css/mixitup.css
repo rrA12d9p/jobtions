@@ -1,0 +1,56 @@
+.container{
+  padding: 2% 2% 0;
+  text-align: justify;
+  font-size: 0.1px;
+  background: #fff;
+  
+  -webkit-backface-visibility: hidden;
+}
+
+.container:after{
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+
+.container .mix,
+.container .gap{
+  display: inline-block;
+  width: 49%;
+}
+
+.container .mix{
+  text-align: left;
+  background: #2B78E4;
+  margin-bottom: 2%;
+  display: none;
+}
+
+.container .mix:after{
+  color: white;
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 4% 6%;
+  font-weight: 700;
+}
+
+.container .mix:before{
+  content: '';
+  display: inline-block;
+  padding-top: 60%;
+}
+
+@media all and (min-width: 420px){
+  .container .mix,
+  .container .gap{
+    width: 32%;
+  }
+}
+
+@media all and (min-width: 640px){
+  .container .mix,
+  .container .gap{
+    width: 23.5%;
+  }
+}

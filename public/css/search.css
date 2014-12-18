@@ -1,25 +1,74 @@
 html, body {
 	height: 100%;
+	overflow: auto;
+}
+
+button {
+	background: #ddd;
+	border: none;
+	font-size: 1.1em;
+	margin: 7px auto;
+	padding: 15px;
+	height: auto;
+	width: 127px;
+	display: inline-block;
+	color: #fff;
+}
+
+#Reset {
+	margin-top: 20px;
+	width: 100%;
+	background: #C71E13;
+	color: #fff;
+}
+
+button.desc {
+	background: #13C120;
+}
+
+button.asc {
+	background: #C71E13;
+}
+
+fieldset {
+	margin: 0;
+	padding: 0;
+	padding-top: 10px;
+	border: none;
+}
+
+div.controls {
+	text-align: right;
 }
 
 .user-card {
+	color: white;
 	margin: 5px;
 	border: 1px solid black;
-	height: 75px;
+	height: 150px;
 	padding: 10px;
+	overflow: hidden;
 }
 
-.user-card img {
-	margin-right: 10px;
+.mix .user-card div {
+	height: 20px;
+}
+
+div.checkbox label{
+	display: block;
+}
+
+.user-card .image, img {
 	float: left;
-	display: inline-block;
-	width: 50px;
-	height: 50px;
-	border: 1px solid black;
+	width: 100px;
+	height: auto;
+	margin-right: 10px;
 }
 
-.user-card span {
-
+.user-card p {
+	float: left;
+	width: 250px;
+	font-size: 1rem;
 }
 
 /*=======*/
@@ -32,14 +81,30 @@ div.main-container {
 	overflow: auto;
 }
 
+.mix {
+	width: 100%;
+	display: block;
+}
+
+#Container div {
+	height: auto;
+	display: inline-block;
+	float: left;
+}
+
+div .mix {
+	border: 0px solid black;
+}
+
 .profile-main {
 	float: left;
 	width: 700px;
 	max-height: 600px;
-	/*min-height: 600px;*/
+	min-height: 800px;
 	overflow-y: scroll;
 	background: #fff;
 	padding: 25px;
+	margin-bottom: 40px;
 }
 
 .profile-main h1{
@@ -69,7 +134,7 @@ header {
 
 aside {
 	height: 600px;
-	min-height: 600px;
+	min-height: 800px;
 	width: 300px;
 	margin-right: 15px;
 	min-width: 200px;
@@ -80,7 +145,8 @@ aside {
 }
 
 .filter-wrapper {
-	padding: 20px 0 0 20px;
+	padding: 0;
+	margin: auto;
 }
 
 aside .checkbox-group {

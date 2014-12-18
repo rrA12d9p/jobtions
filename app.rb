@@ -30,6 +30,10 @@ before do
 end
 
 helpers do
+  def h(text)
+    Rack::Utils.escape_html(text)
+  end
+
   def require_login
     redirect "/" if !@logged_in
   end
@@ -55,13 +59,15 @@ get '/' do
   return erb :index
 end
 
-get '/search' do
+get '/browse' do
   require_personality
   require_job
   @job_categories = JobCategories::ALL.sort_by {|k, v| k[:category]}
   @current_user = User.find(session[:user][:id])  
   @users = User.all
-  return erb :search
+
+  @search_filter = session[:user][:filter]
+  return erb :browse
 end
 
 get '/:username/questionnaire' do
@@ -89,7 +95,7 @@ post "/signin" do
   
   if user_exists && user.authenticate(password)
     username = user.username
-    session[:user] = {id: user.id, email: email, username: username}
+    session[:user] = {id: user.id, email: email, username: username, filter: {min_sat: "3", min_sal: "thirty", sort: "desc"}}
     redirect "/"
   else
     redirect "/signin"
@@ -102,15 +108,13 @@ get "/signout" do
 end
 
 post "/signup" do
-  username = params[:username]
-  email = params[:email]
-  password = params[:password]
-  zipcode = params[:zipcode]
+  image_url = params[:image_url]
+  image_url ||= "http://lorempixel.com/200/200/people"
 
-  user = User.new(username: username, email: email, password: password, zipcode: zipcode)
+  user = User.new(username: params[:username], email: params[:email], password: params[:password], zipcode: params[:zipcode], image_url: image_url)
 
   if user.save
-  	session[:user] = {id: user.id, email: email, username: username }
+  	session[:user] = {id: user.id, email: params[:email], username: params[:username], filter: {min_sat: "3", min_sal: "thirty", sort: 'desc'} }
     
     job = Job.new(job_title: params[:job_title], category: params[:job_category], satisfaction: params[:job_satisfaction], salary: params[:job_salary], years_experience: params[:job_experience], user_id: user.id)
     if job.save
@@ -194,6 +198,6 @@ post "/save-questionnaire" do
     personality = Personality.create(params)
   end
 
-  redirect '/'
+  redirect "/#{user.username}/profile"
 
 end
