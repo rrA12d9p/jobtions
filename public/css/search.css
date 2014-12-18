@@ -62,19 +62,48 @@ div.checkbox label{
 }
 
 .user-card .card-right .satisfaction {
-	background: url('../img/5_star_ratings.png');
-	background-size: 100%;
 	height: 40px;
 	margin-bottom: 20px;
 }
+/*satisfaction stars*/
+.very_satisfied{
+	background: url('../img/5_star_ratings.png');
+	background-size: 100%;
+	background-position: 0 0px;
+}
+
+.satisfied{
+	background: url('../img/5_star_ratings.png');
+	background-size: 100%;
+	background-position: 0 -45px;
+}
+
+.somewhat_satisfied{
+	background: url('../img/5_star_ratings.png');
+	background-size: 100%;
+	background-position: 0 -90px;
+}
+
+.somewhat_dissatisfied{
+	background: url('../img/5_star_ratings.png');
+	background-size: 100%;
+	background-position: 0 -127px;
+}
+
+.very_dissatisfied{
+	background: url('../img/5_star_ratings.png');
+	background-size: 100%;
+	background-position: 0 -170px;
+}
+/*satisfaction stars*/
 
 .user-card .card-right .category {
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	text-align: center;
 }
 
 .user-card .card-right .salary {
-	margin-top: 20px;
+	margin-top: 30px;
 	text-align: right;
 }
 
@@ -111,6 +140,8 @@ div.checkbox label{
 
 .user-card .jobtitle {
 	max-height: 35px;
+	height: auto;
+	margin-bottom: 10px;
 	overflow: hidden;
 }
 

@@ -137,7 +137,7 @@ $(document).ready(function(){
               <p class="similarity"><%= @current_user.get_similarity(u) %>%</p>
             </div>
             <div class="card-right">
-              <div data="satisfaction-<%= u.job.satisfaction %>" class="satisfaction"></div>
+              <div class="satisfaction <%= u.job.satisfaction %>"></div>
               <div class="category"><%= u.job.category %></div>
               <div class="salary"><%= u.job.salary %></div>
             </div>
