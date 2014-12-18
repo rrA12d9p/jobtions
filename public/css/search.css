@@ -117,7 +117,7 @@ div.checkbox label{
 	display: inline-block;
 	float: left;
 	width: 115px;
-	background: url("http://whdigital.com/goodshepherdlincoln/WP/wp-content/uploads/2013/08/no-profile-pic-m.png");
+	background: url("../img/no-profile-pic.png");
 	background-size: cover;
 	/*height: 130px;*/
 	/*border: 1px solid black;*/
@@ -243,5 +243,5 @@ aside .profile-picture{
 	width: 200px;
 	height: 200px;
 	margin: 30px auto 20px auto;
-	background: url("http://placehold.it/200x200");
+	background: url("../img/no-profile-pic.png");
 }
