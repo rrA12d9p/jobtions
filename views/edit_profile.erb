@@ -1,0 +1,71 @@
+<script type="text/javascript" src="/js/helper.js"></script>
+<script type="text/javascript" src="/js/plugins/Chart.js-master/Chart.js"></script>
+<script>loadCSS("/css/user_profile.css")</script>
+<script>loadCSS("/css/edit_profile.css")</script>
+
+<%= erb(:header, :layout => false) %>
+
+
+<div class="main-container">
+
+	<aside>
+	
+		<div class="profile-picture">
+			<img src="<%=@user.image_url%>">
+			
+		</div>
+
+		<h1 class="center"> <%= @user.username %> </h1>
+
+	</aside>
+	
+	<section class="profile-main">
+
+	<form action="/user/update" method="post">
+		<input type="text" name="url" placeholder="Image URL" value="<%=@user.image_url%>">
+		<!-- <input type="text" placeholder="username" name="username"> -->
+		<input type="email" placeholder="email" name="email" value="<%=@user.email%>">
+		<!-- <input type="password" placeholder="password" name="password"> -->
+		<!-- <input type="password" placeholder="confirm password" name="confirm_password"> -->
+		<input type="text" placeholder="zipcode" name="zipcode" value="<%=@user.zipcode%>">
+
+		<input type="text" name="job_title" placeholder="Job title" value="<%=@user.job.job_title%>"></input>
+		<select name="job_category" required>
+			<option value="<%=@user.job.category%>" selected><%=@user.job.category%></option>
+			<% @job_categories.each do |job| %>
+				<option value=<%=job[:category]%>><%=job[:category]%></option>
+			<% end %>
+		</select>
+
+		<input type="number" name="years_experience" min="0" placeholder="Years of experience" value="<%=@user.job.years_experience%>"></input>
+
+		<select required name="job_satisfaction">
+			<option value="<%=@user.job.satisfaction%>" selected><%=@user.job.satisfaction%></option>
+			<option value="very_satisfied">Very satisfied</option>
+			<option value="satisfied">Satisfied</option>
+			<option value="somewhat_satisfied">Somewhat satisfied</option>
+			<option value="somewhat_dissatisfied">Somewhat dissatisfied</option>
+			<option value="very_dissatisfied">Very dissatisfied</option>
+		</select>
+
+		<select required name="job_salary">
+			<option value="" selected><%=@user.job.salary%></option>
+			<option value="hundred">$100,000+</option>
+			<option value="eighty">$80,000 - $100,000</option>
+			<option value="fifty">$50,000 - $80,000</option>
+			<option value="thirty">$30,000 - $50,000</option>
+			<option value="zero">&lt; $30,000</option>
+		</select>
+	
+	<input type="submit" value="Save">
+
+	</form>
+
+	</section>
+
+</div>
+
+
+<script type="text/javascript">
+
+</script>

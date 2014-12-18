@@ -3,7 +3,7 @@ require 'sinatra/reloader'
 require 'sinatra/activerecord'
 
 require_relative "./models/questions.rb"
-require_relative "./models/job_categories.rb"
+require_relative "./models/selection_items.rb"
 require_relative "config/environments.rb"
 
 require_relative "./models/job"
@@ -62,7 +62,8 @@ end
 get '/browse' do
   require_personality
   require_job
-  @job_categories = JobCategories::ALL.sort_by {|k, v| k[:category]}
+  @job_categories = SelectionItems::JOB_CATEGORIES.sort_by {|k, v| k[:category]}
+  @salaries = SelectionItems::JOB_SALARY
   @current_user = User.find(session[:user][:id])  
   @users = User.all
 
@@ -82,7 +83,7 @@ get '/signin' do
 end
 
 get '/signup' do
-  @job_categories = JobCategories::ALL.sort_by {|k, v| k[:category]}
+  @job_categories = SelectionItems::JOB_CATEGORIES.sort_by {|k, v| k[:category]}
 	return erb :signup
 end
 
@@ -115,7 +116,7 @@ post "/signup" do
   user = User.new(username: params[:username], email: params[:email], password: params[:password], zipcode: params[:zipcode], image_url: image_url)
 
   if user.save
-  	session[:user] = {id: user.id, email: params[:email], username: params[:username], filter: {min_sat: "3", min_sal: "thirty", sort: 'desc'} }
+  	session[:user] = {id: user.id, email: params[:email], username: params[:username] }
     
     job = Job.new(job_title: params[:job_title], category: params[:job_category], satisfaction: params[:job_satisfaction], salary: params[:job_salary], years_experience: params[:job_experience], user_id: user.id)
     if job.save
@@ -131,33 +132,43 @@ post "/signup" do
   redirect '/'
 end
 
-# post "/:username/profile/update" do
-#   @own_profile = session[:user][:username] == params[:username]
+get "/profile/edit" do
+  require_login
+  require_personality
 
+  @user = User.find(session[:user][:id])
+  @job_categories = SelectionItems::JOB_CATEGORIES.sort_by {|k, v| k[:category]}
 
-#   if @own_profile
-#     existing_job = Job.find_by(user_id: user.id)
+  return erb :edit_profile
+end
 
-#     params = {job_title: job_title, years_experience: years_experience, category: category, salary: salary, user_id: user.id}
+post "/user/update" do
+  @user = User.find(session[:user][:id])
+  @job = Job.find_by(user_id: @user.id)
+  image_url = params[:url]
 
-#     if existing_job
-#       user.job.update(params)
-#     else
-#       job = Job.create(params)
-#     end
-#   end
-# end
+  if @user.update(email: params[:email], zipcode: params[:zipcode], image_url: image_url)
+    if @job.update(job_title: params[:job_title], category: params[:job_category], satisfaction: params[:job_satisfaction], salary: params[:job_salary], years_experience: params[:job_experience], user_id: @user.id)
+    else
+      @errors = @user.errors.full_messages
+      puts @errors
+    end
+  else
+    @errors = @user.errors.full_messages
+    puts @errors
+  end
 
-get "/:username/profile" do 
+  redirect "/#{@user.username}/profile"
+end
+
+get "/:username/profile" do
+  # users can view each others' profiles but need to be logged in
   require_login
   require_personality
 
   @own_profile = session[:user][:username] == params[:username]
 
   @user = User.find_by(username: params[:username])
-
-  # users can view each others' profiles but need to be logged in
-  redirect '/' if session[:user] == [] || @user == nil 
 
   return erb :user_profile
 end

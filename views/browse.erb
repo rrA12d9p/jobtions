@@ -3,16 +3,21 @@
 <script>loadCSS("/css/ratings.css")</script>
 
 <script type="text/javascript" src="/js/plugins/mixitup/build/jquery.mixitup.min.js"></script>
-<script type="text/javascript" src="/js/search.js"></script>
 
 <script type="text/javascript">
 
 $(document).ready(function(){
-	// inital mixitup (needs to load from session instead)
-	$('#Container').mixItUp();
+  $('#Container').mixItUp({
+    load: {
+      sort: 'myorder:desc'
+    }
+  });
 });
 
 </script>
+
+<script type="text/javascript" src="/js/search.js"></script>
+
 
 <%= erb(:header, :layout => false) %>
 
@@ -125,10 +130,9 @@ $(document).ready(function(){
 				<% similarity = @current_user.get_similarity(u) %>
 				<% if similarity != false && u != @current_user %>
 					<% i += 1 %>
-					<a href="/<%=u.username%>/profile"><div data-myorder="<%= similarity %>%" class="mix user-card <%= @current_user.get_similarity(u) %> <%= u.job.satisfaction %> <%= u.job.category %> <%= u.job.salary %>">
-						<!-- <div class="image"><img src="<%= u.image_url %>"></div> -->
-              <div class="card-left">
-                <img src="<%= u.image_url %>">
+					<div data-myorder="<%= similarity %>%" class="mix user-card <%= @current_user.get_similarity(u) %> <%= u.job.satisfaction %> <%= u.job.category %> <%= u.job.salary %>">
+               <div class="card-left">
+                <a href="/<%=u.username%>/profile"><img src="<%= u.image_url %>"></a>
                 <p class="username"><%= u.username %></p>
               </div>
             <div class="card-middle">
@@ -138,9 +142,9 @@ $(document).ready(function(){
             <div class="card-right">
               <div class="satisfaction <%= u.job.satisfaction %>"></div>
               <div class="category"><%= u.job.category %></div>
-              <div class="salary"><%= u.job.salary %></div>
+              <div class="salary"><%= @salaries[u.job.salary.to_sym] %></div>
             </div>
-					</div></a>
+					</div>
 				<% end %>
 			<% end %>
 

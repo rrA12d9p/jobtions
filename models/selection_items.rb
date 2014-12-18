@@ -1,5 +1,10 @@
-module JobCategories
-	ALL = [
+module SelectionItems
+	JOB_CATEGORIES = [
 	 {category: "Accounting"}, {category: "General Business"}, {category: "Other"}, {category: "Admin and Clerical"}, {category: "General Labor"}, {category: "Pharmaceutical"}, {category: "Automotive"}, {category: "Government"}, {category: "Professional Services"}, {category: "Banking"}, {category: "Grocery"}, {category: "Purchasing"}, {category: "Procurement"}, {category: "Biotech"}, {category: "Health Care"}, {category: "QA"}, {category: "Quality Control"}, {category: "Broadcast"}, {category: "Journalism"}, {category: "Hotel"}, {category: "Hospitality"}, {category: "Real Estate"}, {category: "Business Development"}, {category: "Human Resources"}, {category: "Research"}, {category: "Construction"}, {category: "Information Technology"}, {category: "Restaurant"}, {category: "Food Service"}, {category: "Consultant"}, {category: "Installation"}, {category: "Repair"}, {category: "Retail"}, {category: "Customer Service"}, {category: "Insurance"}, {category: "Sales"}, {category: "Design"}, {category: "Inventory"}, {category: "Science"}, {category: "Distribution"}, {category: "Shipping"}, {category: "Legal"}, {category: "Skilled Labor"}, {category: "Trades"}, {category: "Education"}, {category: "Teaching"}, {category: "Legal Admin"}, {category: "Strategy"}, {category: "Planning"}, {category: "Engineering"}, {category: "Management"}, {category: "Supply Chain"}, {category: "Entry Level"}, {category: "New Grad"}, {category: "Manufacturing"}, {category: "Telecommunications"}, {category: "Executive"}, {category: "Marketing"}, {category: "Training"}, {category: "Facilities"}, {category: "Media"}, {category: "Newspaper"}, {category: "Transportation"}, {category: "Finance"}, {category: "Nonprofit"}, {category: "Social Services"}, {category: "Warehouse"}, {category: "Franchise"}, {category: "Nurse"}
 	]
+
+	JOB_SATISFACTION  = {very_satisfied: "Very satisfied", satisfied: "Satisfied", somewhat_satisfied: "Somewhat satisfied", somewhat_dissatisfied: "Somewhat dissatisfied", very_dissatisfied: "Very dissatisfied"}
+
+	JOB_SALARY = {hundred: "$100,000+",eighty: "$80,000 - $100,000",fifty: "$50,000 - $80,000",thirty: "$30,000 - $50,000",zero: "&lt; $30,000"}
+
 end

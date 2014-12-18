@@ -49,6 +49,8 @@ aside .profile-picture{
 	width: 200px;
 	height: 200px;
 	margin: 30px auto 20px auto;
+	background: url("../img/no-profile-pic.png");
+	background-size: cover;
 }
 
 aside .profile-picture img {

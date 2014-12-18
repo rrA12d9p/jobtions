@@ -15,7 +15,7 @@
 
 		<% if @own_profile %>
 			<div class="editControls">
-				<button id="editProfile">Edit profile</button>
+				<a href="/profile/edit"><button id="editProfile">Edit profile</button></a>
 				<a href="/<%=@user.username%>/questionnaire"><button id="retakePersonality">Retake test</button></a>
 			</div>
 		<% end %>
