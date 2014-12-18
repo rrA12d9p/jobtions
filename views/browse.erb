@@ -127,15 +127,21 @@ $(document).ready(function(){
 				<% if similarity != false && u != @current_user %>
 					<% i += 1 %>
 					<div data-myorder="<%= similarity %>%" class="mix user-card <%= @current_user.get_similarity(u) %> <%= u.job.satisfaction %> <%= u.job.category %> <%= u.job.salary %>">
-						<div class="image"><img src="<%= u.image_url %>"></div>
-						<div class="username" longdesc="#1"><p><%= u.username %></p></div>
-						<div class="similarity"><p><%= @current_user.get_similarity(u) %>%</p></div>
-						<div class="jobtitle"><p><%= u.job.job_title %></p></div>
-						<div class="satisfaction"><p><%= u.job.satisfaction %></p></div>
-						<div class="years_experience"><p><%= u.job.years_experience %></p></div>
-						<div class="category"><p><%= u.job.category %></p></div>
-						<div class="salary"><p><%= u.job.salary %></p></div>
-						<div class="company"><p><%= u.job.company %></p></div>
+						<!-- <div class="image"><img src="<%= u.image_url %>"></div> -->
+              <div class="card-left">
+                <img src="<%= u.image_url %>">
+                <p class="username"><%= u.username %></p>
+              </div>
+            <div class="card-middle">
+              <p class="jobtitle"><%= u.job.job_title %></p>
+              <p class="similarity"><%= @current_user.get_similarity(u) %>%</p>
+            </div>
+            <div class="card-right">
+              <p class="satisfaction"><%= u.job.satisfaction %></p>
+              <p class="years_experience"><%= u.job.years_experience %></p>
+              <p class="category"><%= u.job.category %></p>
+              <p class="salary"><%= u.job.salary %></p>
+            </div>
 					</div>
 				<% end %>
 			<% end %>

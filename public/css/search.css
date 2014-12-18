@@ -53,10 +53,51 @@ div.checkbox label{
 	display: block;
 }
 
-.user-card .image, img {
+.user-card div {
+	border: 1px solid black;
+	height: 115px;
+}
+
+.user-card .card-middle p, .card-right p {
+	/*padding: 10px;*/
+	display: block;
+	width: 100%;
+}
+
+.user-card .card-left {
+	display: inline-block;
 	float: left;
-	width: 100px;
-	height: auto;
+	width: 115px;
+	background: url("http://whdigital.com/goodshepherdlincoln/WP/wp-content/uploads/2013/08/no-profile-pic-m.png");
+	background-size: cover;
+	/*height: 130px;*/
+	/*border: 1px solid black;*/
+}
+
+.user-card .card-middle {
+	height: 115px;
+	width: 265px;
+	/*border: 1px solid black;*/
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.user-card .similarity {
+	font-size: 2.5rem;
+}
+
+.user-card .card-right {
+	height: 115px;
+	width: 200px;
+	/*border: 1px solid red;*/
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.user-card img {
+	float: left;
+	width: auto;
+	height: 115px;
 	margin-right: 10px;
 }
 
@@ -64,6 +105,10 @@ div.checkbox label{
 	float: left;
 	width: 250px;
 	font-size: 1rem;
+}
+
+.user-card p.username {
+	/*border: 1px solid red;*/
 }
 
 /*=======*/
