@@ -41,6 +41,7 @@ aside {
 	overflow: auto;
 	background: #2B78E4;
 	padding: 20px;
+	color: white;
 }
 
 aside .profile-picture{
@@ -50,10 +51,19 @@ aside .profile-picture{
 	margin: 30px auto 20px auto;
 }
 
+aside .profile-picture img {
+	height: 100%;
+}
+
+#myCanvas {
+	display: block;
+	margin: 80px auto;
+}
+
 .profile-main {
 	float: left;
 	width: 700px;
-	height: 100%;
+	max-height: 600px;
 	min-height: 600px;
 	background: #fff;
 	padding: 10px 40px;
@@ -61,7 +71,9 @@ aside .profile-picture{
 }
 
 .profile-main h1{
+	margin-top: 20px;
 	font-size: 2em;
+	text-align: center;
 }
 
 .signup-wrapper {

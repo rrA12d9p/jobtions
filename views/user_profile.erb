@@ -1,4 +1,5 @@
 <script type="text/javascript" src="/js/helper.js"></script>
+<script type="text/javascript" src="/js/plugins/Chart.js-master/Chart.js"></script>
 <script>loadCSS("/css/user_profile.css")</script>
 
 <%= erb(:header, :layout => false) %>
@@ -16,15 +17,40 @@
 	
 	<section class="profile-main">
 
-		<ul class="fancy-list">
-			<li>Extraversion: <%= @user.personality.extraversion %>%</li>
-			<li>Agreeableness: <%= @user.personality.agreeableness %>%</li>
-			<li>Conscientiousness: <%= @user.personality.conscientiousness %>%</li>
-			<li>Emotional Stability: <%= @user.personality.emotional_stability %>%</li>
-			<li>Intellect/Imagination: <%= @user.personality.intellect_imagination %>%</li>
-		</ul>
+	<h1>Personality scores</h1>
+
+	<canvas id="myCanvas" width="400" height="400"></canvas>
 
 	</section>
 
-
 </div>
+
+<script type="text/javascript">
+
+$(document).ready(function() { 
+	// Get context with jQuery - using jQuery's .get() method.
+	var ctx = $("#myCanvas").get(0).getContext("2d");
+	// This will get the first returned node in the jQuery collection.
+
+	var data = {
+    labels: ["Extraversion","Agreeableness","Conscientiousness","Emotional Stability","Intellect/Imagination"],
+    datasets: [
+        {
+            label: "Personality Profile",
+            fillColor: "rgba(220,220,220,1)",
+            strokeColor: "rgba(220,220,220,0.8)",
+            highlightFill: "rgba(29,92,225,0.75)",
+            highlightStroke: "rgba(220,220,220,0)",
+            data: [<%= @user.personality.extraversion %>,
+            			 <%= @user.personality.agreeableness %>,
+            			 <%= @user.personality.conscientiousness %>,
+            			 <%= @user.personality.emotional_stability %>,
+            			 <%= @user.personality.intellect_imagination %>,
+            			 ]
+        },
+    ]
+	};
+
+	var myBarChart = new Chart(ctx).Bar(data, {scaleBeginAtZero : false});
+});
+</script>
