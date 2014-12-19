@@ -1,6 +1,3 @@
-# require 'sinatra'
-# require 'sinatra/reloader'
-# require 'sinatra/activerecord'
 require 'faker'
 
 require_relative "../models/questions.rb"
@@ -22,8 +19,8 @@ def seed_records(num)
 		image_url ||= "http://api.randomuser.me/portraits/med/#{person}.jpg"
 
 		job_category = SelectionItems::JOB_CATEGORIES.sample[:category]
-		satisfaction = SelectionItems::JOB_SATISFACTION.sample
-		salary = SelectionItems::JOB_SALARY.sample
+		satisfaction = ["very_satisfied", "satisfied", "somewhat_satisfied", "somewhat_dissatisfied", "very_dissatisfied"].sample
+		salary = ["hundred", "eighty", "fifty", "thirty", "zero"].sample
 		job_experience = rand(0..40).to_s
 
 		user = User.new(username: username, email: email, password: password, zipcode: zipcode, image_url: image_url)
