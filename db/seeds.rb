@@ -4,7 +4,7 @@
 require 'faker'
 
 require_relative "../models/questions.rb"
-require_relative "../models/job_categories.rb"
+require_relative "../models/selection_items.rb"
 
 require_relative "../models/job"
 require_relative "../models/personality"
@@ -21,15 +21,15 @@ def seed_records(num)
 		person = ['men', 'women'].sample + '/' + rand(1..90).to_s
 		image_url ||= "http://api.randomuser.me/portraits/med/#{person}.jpg"
 
-		job_categories = JobCategories::ALL
-		satisfaction = ["very_satisfied", "satisfied", "somewhat_satisfied", "somewhat_dissatisfied", "very_dissatisfied"]
-		salary = ["hundred", "eighty", "fifty", "thirty", "zero"]
+		job_category = SelectionItems::JOB_CATEGORIES.sample[:category]
+		satisfaction = SelectionItems::JOB_SATISFACTION.sample
+		salary = SelectionItems::JOB_SALARY.sample
 		job_experience = rand(0..40).to_s
 
 		user = User.new(username: username, email: email, password: password, zipcode: zipcode, image_url: image_url)
 
 		if user.save
-		  job = Job.new(job_title: Faker::Name.title, category: job_categories.sample[:category], satisfaction: satisfaction.sample, salary: salary.sample, years_experience: job_experience, user_id: user.id)
+		  job = Job.new(job_title: Faker::Name.title, category: job_category, satisfaction: satisfaction, salary: salary, years_experience: job_experience, user_id: user.id)
 		  p_hash = {extraversion: rand(10000).to_f/100, agreeableness: rand(10000).to_f/100.00, conscientiousness: rand(10000).to_f/100, emotional_stability: rand(10000).to_f/100, intellect_imagination: rand(10000).to_f/100, user_id: user.id}
 		  personality = Personality.new(p_hash)
 		  if job.save && personality.save
