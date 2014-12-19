@@ -10,7 +10,7 @@ button {
 	margin: 7px auto;
 	padding: 15px;
 	height: auto;
-	width: 127px;
+	width: 120px;
 	display: inline-block;
 	color: #fff;
 }
@@ -180,20 +180,21 @@ p.username {
 
 div.main-container {
 	margin: 15px auto 0 auto;
+	height: 100%;
 	width: 1015px;
-	background: #333;
+	background: #fff;
 	overflow: auto;
 }
 
 .profile-main {
 	float: left;
 	width: 700px;
-	max-height: 600px;
+	/*max-height: 600px;*/
+	height: 100%;
 	min-height: 600px;
 	overflow-y: scroll;
 	background: #fff;
 	padding: 25px;
-	margin-bottom: 40px;
 }
 
 .profile-main h1{
@@ -222,10 +223,11 @@ header {
 }
 
 aside {
-	height: 600px;
+	/*height: 600px;*/
+	height: 100%;
 	min-height: 600px;
 	width: 300px;
-	margin-right: 15px;
+	border-right: 15px solid #333;
 	min-width: 200px;
 	float: left;
 	overflow-y: scroll;
