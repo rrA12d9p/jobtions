@@ -117,10 +117,11 @@ post "/signup" do
   user = User.new(username: params[:username], email: params[:email], password: params[:password], zipcode: params[:zipcode], image_url: image_url)
 
   if user.save
-  	session[:user] = {id: user.id, email: params[:email], username: params[:username] }
     
     job = Job.new(job_title: params[:job_title], category: params[:job_category], satisfaction: params[:job_satisfaction], salary: params[:job_salary], years_experience: params[:job_experience], user_id: user.id)
     if job.save
+      session[:user] = {id: user.id, email: params[:email], username: params[:username] }
+      redirect "/#{user.username}/profile"
     else
       @errors = user.errors.full_messages
       puts @errors
