@@ -6,7 +6,7 @@
 
 Jobtions helps connect like-minded people to see what jobs they may be suited for.
 
-[Jobtions](https://still-ravine-2038.herokuapp.com/)
+[Jobtions](https://jobtions.herokuapp.com/)
 
 **Technologies Used**
 
