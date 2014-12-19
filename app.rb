@@ -63,9 +63,10 @@ get '/browse' do
   require_personality
   require_job
   @job_categories = SelectionItems::JOB_CATEGORIES.sort_by {|k, v| k[:category]}
-  @salaries = SelectionItems::JOB_SALARY
   @current_user = User.find(session[:user][:id])  
   @users = User.all
+
+  @salaries = SelectionItems::JOB_SALARY
 
   @search_filter = session[:user][:filter]
   return erb :browse
@@ -138,27 +139,26 @@ get "/profile/edit" do
 
   @user = User.find(session[:user][:id])
   @job_categories = SelectionItems::JOB_CATEGORIES.sort_by {|k, v| k[:category]}
+  @salaries = SelectionItems::JOB_SALARY
 
   return erb :edit_profile
 end
 
 post "/user/update" do
-  @user = User.find(session[:user][:id])
-  @job = Job.find_by(user_id: @user.id)
   image_url = params[:url]
+  email = params[:email]
+  zipcode = params[:zipcode]
+  job_title = params[:job_title]
+  job_category = params[:job_category]
+  job_salary = params[:job_salary]
+  satisfaction = params[:job_satisfaction]
 
-  if @user.update(email: params[:email], zipcode: params[:zipcode], image_url: image_url)
-    if @job.update(job_title: params[:job_title], category: params[:job_category], satisfaction: params[:job_satisfaction], salary: params[:job_salary], years_experience: params[:job_experience], user_id: @user.id)
-    else
-      @errors = @user.errors.full_messages
-      puts @errors
-    end
-  else
-    @errors = @user.errors.full_messages
-    puts @errors
-  end
+  user = User.find(session[:user][:id])
 
-  redirect "/#{@user.username}/profile"
+  user.update(image_url: image_url, email: email, zipcode: zipcode)
+  user.job.update(job_title: job_title, satisfaction: satisfaction, category: job_category, salary: job_salary)
+
+  redirect "/#{user.username}/profile"
 end
 
 get "/:username/profile" do

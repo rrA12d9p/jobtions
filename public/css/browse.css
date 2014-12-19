@@ -98,7 +98,12 @@ div.checkbox label{
 /*satisfaction stars*/
 
 .user-card .card-right .category {
-	font-size: 1.4rem;
+	font-size: 1.2rem;
+	text-align: right;
+}
+
+p.username {
+	margin-top: 3px;
 	text-align: center;
 }
 

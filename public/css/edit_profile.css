@@ -24,7 +24,7 @@ aside h1.center {
 }
 
 aside .profile-picture img {
-	height: auto;
+	height: 100%;
 }
 
 aside input[type=submit] {
