@@ -32,6 +32,11 @@ Jobtions helps connect like-minded people to see what jobs they may be suited fo
 
 **What's next?**
 - Refactoring
+- Background processing for similar users
+- Overall scalability enhancements (MixItUp doesn't recommend more than 150 users on a page)
+- Private messaging
+- CRUD for company information (new table?)
+- Better data validation
 - More Styling 
 - Testing
 
