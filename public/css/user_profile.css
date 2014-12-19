@@ -65,8 +65,7 @@ aside .profile-picture img {
 .profile-main {
 	float: left;
 	width: 700px;
-	max-height: 600px;
-	min-height: 600px;
+	min-height: 100%;
 	background: #fff;
 	padding: 10px 40px;
 	overflow: hidden;
