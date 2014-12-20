@@ -12,7 +12,12 @@
 }
 
 body, html {
+	min-height: 600px;
 	height: 100%;
+}
+
+header {
+	min-width: 30em;
 }
 
 input, button:focus {
