@@ -5,13 +5,13 @@
 
 	<nav>
 		<%if session[:user].empty? %>
-			<a class="btn-main" href="/signin">Sign in</a>
-			<a class="btn-main" href="/signup">Create an account</a>
+			<a class="btn-main glow dark-hover" href="/signin">Sign in</a>
+			<a class="btn-main glow dark-hover" href="/signup">Create an account</a>
 		<% else %>
 			<!-- buttons change if logged in -->
-			<a class="btn-main" href="/browse">Browse</a>
-			<a class="btn-main" href="/<%= session[:user][:username] %>/profile">Profile</a>
-			<a class="btn-main" href="/signout">Sign out</a>
+			<a class="btn-main glow dark-hover" href="/browse">Browse</a>
+			<a class="btn-main glow dark-hover" href="/<%= session[:user][:username] %>/profile">Profile</a>
+			<a class="btn-main glow dark-hover" href="/signout">Sign out</a>
 		<% end %>
 	</nav>
 </header>

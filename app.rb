@@ -89,15 +89,14 @@ get '/signup' do
 end
 
 post "/signin" do
-  email = params[:email]
   password = params[:password]
 
-  user = User.find_by(email: email)
+  user = User.find_by(email: params[:email])
   user_exists = (user != nil)
   
-  if user_exists && user.authenticate(password)
+  if user_exists && user.authenticate(params[:password])
     username = user.username
-    session[:user] = {id: user.id, email: email, username: username, filter: {min_sat: "3", min_sal: "thirty", sort: "desc"}}
+    session[:user] = {id: user.id, email: params[:email], username: username}
     redirect "/"
   else
     redirect "/signin"
@@ -111,13 +110,10 @@ end
 
 post "/signup" do
   image_url = params[:image_url]
-  # person = ['men', 'women'].sample + '/' + rand(1..90).to_s
-  # image_url ||= "http://api.randomuser.me/portraits/med/#{person}.jpg"
 
   user = User.new(username: params[:username], email: params[:email], password: params[:password], zipcode: params[:zipcode], image_url: image_url)
 
   if user.save
-    
     job = Job.new(job_title: params[:job_title], category: params[:job_category], satisfaction: params[:job_satisfaction], salary: params[:job_salary], years_experience: params[:job_experience], user_id: user.id)
     if job.save
       session[:user] = {id: user.id, email: params[:email], username: params[:username] }
@@ -146,18 +142,10 @@ get "/profile/edit" do
 end
 
 post "/user/update" do
-  image_url = params[:url]
-  email = params[:email]
-  zipcode = params[:zipcode]
-  job_title = params[:job_title]
-  job_category = params[:job_category]
-  job_salary = params[:job_salary]
-  satisfaction = params[:job_satisfaction]
-
   user = User.find(session[:user][:id])
 
-  user.update(image_url: image_url, email: email, zipcode: zipcode)
-  user.job.update(job_title: job_title, satisfaction: satisfaction, category: job_category, salary: job_salary)
+  user.update(image_url: params[:url], email: params[:email], zipcode: params[:zipcode])
+  user.job.update(job_title: params[:job_title], satisfaction: params[:job_satisfaction], category: params[:job_category], salary: params[:job_salary])
 
   redirect "/#{user.username}/profile"
 end
@@ -167,7 +155,7 @@ get "/:username/profile" do
   require_login
   require_personality
 
-  @own_profile = session[:user][:username] == params[:username]
+  @own_profile = (session[:user][:username] == params[:username])
 
   @user = User.find_by(username: params[:username])
 
