@@ -1,16 +1,17 @@
 <%= erb(:header, :layout => false) %>
 
 <link rel="stylesheet" type="text/css" href="../css/auth.css">
+<script type="text/javascript" src="../js/auth.js"></script>
 
 <div class="signup-wrapper">
 	<form action="/signup" method="post">
-		<input type="text" placeholder="username" name="username">
-		<input type="email" placeholder="email" name="email">
-		<input type="password" placeholder="password" name="password">
-		<input type="password" placeholder="confirm password" name="confirm_password">
-		<input type="text" placeholder="zipcode" name="zipcode">
+		<input type="text" required placeholder="username" minlength="6" maxlength="20" name="username">
+		<input type="email" required placeholder="email" name="email">
+		<input type="password" required placeholder="password" minlength="6" name="password">
+		<input type="password" required placeholder="confirm password" minlength="6" name="confirm_password">
+		<input type="text" required placeholder="zipcode" minlength="5" maxlength="5" name="zipcode">
 
-		<input type="text" name="job_title" placeholder="Job title"></input>
+		<input type="text" required name="job_title" maxlength="20" placeholder="Job title"></input>
 		
 		<select name="job_category" required>
 			<option value="" disabled selected>Job category</option>
@@ -19,7 +20,7 @@
 			<% end %>
 		</select>
 
-		<input type="number" name="job_experience" min="0" placeholder="Years of experience"></input>
+		<input type="number" required name="job_experience" min="0" max="99" pattern="[0-9]{2}" placeholder="Years of experience"></input>
 
 		<select required name="job_satisfaction">
 			<option value="" disabled selected>Job satisfaction</option>
@@ -39,7 +40,7 @@
 			<option value="zero">&lt; $30,000</option>
 		</select>
 
-		<input type="submit" class="glow dark-hover" value="Sign up">
+		<input type="submit" class="submit glow dark-hover" value="Sign up">
 	</form>
 
 </div>

@@ -19,6 +19,7 @@ before do
     user_id = session[:user][:id]
     if !User.exists?(user_id)
       session.clear
+      redirect '/'
       session[:user] ||= []
     else
       @current_user = User.find(user_id)
@@ -127,7 +128,7 @@ post "/signup" do
   	puts @errors
   end
 
-  redirect '/'
+  redirect '/signup'
 end
 
 get "/profile/edit" do
