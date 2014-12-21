@@ -1,3 +1,3 @@
 require './app'
-config.logger = Logger.new(STDOUT)
 run Sinatra::Application
+config.logger = Logger.new(STDOUT)
