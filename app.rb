@@ -127,7 +127,7 @@ post "/signup" do
   	puts @errors
   end
 
-  redirect '/'
+  redirect '/signup'
 end
 
 get "/profile/edit" do
