@@ -9,7 +9,9 @@ require_relative "../models/user"
 
 def create_admin()
 	STDOUT.puts "Admin password:"
+	system 'stty -echo'
 	password = STDIN.gets.chomp
+	system 'stty echo'
 
 	user = User.create(username: "techytrey", email: "techytrey.mail@gmail.com", password: password, zipcode: "22201", image_url: "https://media.licdn.com/mpr/mpr/shrink_200_200/p/7/005/008/243/14d3bf1.jpg", dummy: false)
   job = Job.create(job_title: "Solution Engineer", category: "Business Development", satisfaction: "very_satisfied", salary: "eighty", years_experience: "2", user_id: user.id, dummy: false)
