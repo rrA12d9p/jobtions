@@ -58,6 +58,6 @@ $(document).ready(function() {
     ]
 	};
 
-	var myBarChart = new Chart(ctx).Bar(data, {scaleBeginAtZero : false});
+	var myBarChart = new Chart(ctx).Bar(data, {scaleOverride: true, scaleStartValue: -100, scaleStepWidth: 10, scaleSteps: 20});
 });
 </script>

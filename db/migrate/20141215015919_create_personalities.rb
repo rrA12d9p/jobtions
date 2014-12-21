@@ -6,7 +6,7 @@ class CreatePersonalities < ActiveRecord::Migration
 			p.text :conscientiousness, null: false
 			p.text :emotional_stability, null: false
 			p.text :intellect_imagination, null: false
-			u.boolean :dummy
+			p.boolean :dummy
 			p.belongs_to :user
 		end
   end

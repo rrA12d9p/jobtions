@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20141215015919) do
     t.text    "category",         null: false
     t.text    "salary",           null: false
     t.text    "company"
+    t.boolean "dummy"
     t.integer "user_id"
   end
 
@@ -32,16 +33,18 @@ ActiveRecord::Schema.define(version: 20141215015919) do
     t.text    "conscientiousness",     null: false
     t.text    "emotional_stability",   null: false
     t.text    "intellect_imagination", null: false
+    t.boolean "dummy"
     t.integer "user_id"
   end
 
   create_table "users", force: true do |t|
-    t.text   "username",        null: false
-    t.text   "email",           null: false
-    t.string "password_digest", null: false
-    t.text   "image_url"
-    t.text   "zipcode",         null: false
-    t.text   "name"
+    t.text    "username",        null: false
+    t.text    "email",           null: false
+    t.string  "password_digest", null: false
+    t.text    "image_url"
+    t.text    "zipcode",         null: false
+    t.text    "name"
+    t.boolean "dummy"
   end
 
 end
