@@ -7,6 +7,7 @@ class CreateJobs < ActiveRecord::Migration
   		j.text :category, null: false
   		j.text :salary, null: false
   		j.text :company
+      u.boolean :dummy
       j.belongs_to :user
   	end
   end

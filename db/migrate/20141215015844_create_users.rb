@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
 	  	u.text :image_url
 	  	u.text :zipcode, null: false
 	    u.text :name
+	    u.boolean :dummy
     end
   end
 end

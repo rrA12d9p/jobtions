@@ -23,11 +23,11 @@ def seed_records(num)
 		salary = ["hundred", "eighty", "fifty", "thirty", "zero"].sample
 		job_experience = rand(0..40).to_s
 
-		user = User.new(username: username, email: email, password: password, zipcode: zipcode, image_url: image_url)
+		user = User.new(username: username, email: email, password: password, zipcode: zipcode, image_url: image_url, dummy: true)
 
 		if user.save
-		  job = Job.new(job_title: Faker::Name.title, category: job_category, satisfaction: satisfaction, salary: salary, years_experience: job_experience, user_id: user.id)
-		  p_hash = {extraversion: rand(10000).to_f/100, agreeableness: rand(10000).to_f/100.00, conscientiousness: rand(10000).to_f/100, emotional_stability: rand(10000).to_f/100, intellect_imagination: rand(10000).to_f/100, user_id: user.id}
+		  job = Job.new(job_title: Faker::Name.title, category: job_category, satisfaction: satisfaction, salary: salary, years_experience: job_experience, user_id: user.id, dummy: true)
+		  p_hash = {extraversion: rand(10000).to_f/100, agreeableness: rand(10000).to_f/100.00, conscientiousness: rand(10000).to_f/100, emotional_stability: rand(10000).to_f/100, intellect_imagination: rand(10000).to_f/100, user_id: user.id, dummy: true}
 		  personality = Personality.new(p_hash)
 		  if job.save && personality.save
 		  else
